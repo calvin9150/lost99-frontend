@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
+import styled from "styled-components";
 
 // const Layout = styled.div`
 //   width: 300px;
@@ -19,50 +20,63 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     margin: 20,
+    padding: 5,
   },
   media: {
     height: 250,
   },
   content: {
-    maxHeight: 300,
+    height: 110,
   },
 });
 
-const CardLayout = (props) => {
+const Buttons = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 1em;
+`;
+
+const LoginId = "gom";
+
+const CardLayout = ({ title, contents, img, userId }) => {
+  const [isMine, setIsMine] = useState(false);
+
+  useEffect(() => {
+    if (userId === LoginId) {
+      setIsMine(true);
+    }
+  }, [userId]);
+
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image="https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg"
-        alt="사진"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          지갑 주인 찾아요
+      <CardMedia className={classes.media} image={img} alt="사진" />
+      <CardContent className={classes.content}>
+        <Typography gutterBottom variant="h5" component="div" noWrap={true}>
+          {title}
         </Typography>
         <Typography
           variant="body2"
           color="textSecondary"
           component="p"
-          className={classes.content}
-          noWrap="true"
+          noWrap={isMine}
         >
-          지갑안에 1000만원있는데, 주인 찾습니다. 지갑안에 1000만원있는데, 주인
-          찾습니다.지갑안에 1000만원있는데, 주인 찾습니다.지갑안에
-          1000만원있는데, 주인 찾습니다.지갑안에 1000만원있는데, 주인
-          찾습니다.지갑안에 1000만원있는데, 주인 찾습니다.지갑안에
-          1000만원있는데, 주인 찾습니다.지갑안에 1000만원있는데, 주인
-          찾습니다.지갑안에 1000만원있는데, 주인 찾습니다.지갑안에
-          1000만원있는데, 주인 찾습니다.
+          {contents}
         </Typography>
+        <CardActions>
+          {isMine && (
+            <Buttons>
+              <Button variant="contained" color="primary">
+                수정하기
+              </Button>
+              <Button variant="contained" color="secondary">
+                삭제하기
+              </Button>
+            </Buttons>
+          )}
+        </CardActions>
       </CardContent>
-      <CardActions>
-        <Button size="small" variant="contained" color="primary">
-          수정하기
-        </Button>
-        {/* <Button size="small">Learn More</Button> */}
-      </CardActions>
     </Card>
   );
 };

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
+
+import { useSelector, useDispatch } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -33,17 +35,23 @@ const CardsWrappper = styled.div`
 `;
 
 const Main = (props) => {
+  const postList = useSelector((state) => state.posts.list);
+
   return (
     <>
       <Container>
         <CardsWrappper>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          {postList.map((v, i) => {
+            return (
+              <Card
+                key={i}
+                title={v.title}
+                contents={v.contents}
+                img={v.img}
+                userId={v.userId}
+              />
+            );
+          })}
         </CardsWrappper>
       </Container>
     </>
