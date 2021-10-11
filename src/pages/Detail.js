@@ -1,22 +1,76 @@
 import React from "react";
+import styled from "styled-components";
+//elements
+
+import { useSelector } from "react-redux";
 
 const Detail = (props) => {
-  return (
-    <div>
-      <div>상세 페이지입니다.</div>
-      <div>물품이미지</div>
-      <div>물픔명</div>
-      <div>분실시간, 습득시간</div>
-      <div>분실장소,습득장소</div>
-      <div>연락처</div>
-      <div>상세내용</div>
-      <button>수정하기</button>
-      <button>추가하기</button>  
-      <button>삭제하기</button>
-      <div>리덕스에서 데이터 가져오기(어떤 게시물인지 확인--> 서버쪽에 저장된 게시물 아이디 비교?)</div>   
 
-    </div>
-  )
+  const post = useSelector((state) => state.post.list)
+  
+  return (
+    <Container>
+      <CardsWrappper>
+        <div>상세 페이지입니다.</div>
+
+        <div
+          style={{
+            width: "100%",
+            height: "300px",
+          }}
+        >
+          <img
+            style={{
+              width: "100%",
+              height: "100%",
+              margin: "auto",
+            }}
+
+            src={props.image_url}
+          />
+        </div>
+        <div>
+          <text>{props.title}</text>
+        </div>
+        <div>
+          <text>{props.contact_number}</text>
+        </div>
+        <div>
+          <text>{props.contents}</text>
+        </div>
+      </CardsWrappper>
+    </Container>
+  );
 };
 
+Detail.defaultProps = {
+  title : "지갑 주웠습니다~",
+  contact_number : "0101010101010",
+  contents : "지갑 잊어버린분 ~",
+  image_url: "http://gdimg.gmarket.co.kr/1136457596/still/600?ver=1621482467"
+
+
+}
+
+
+
 export default Detail;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 70vw;
+  min-height: 900px;
+  background-color: #c0c0c0;
+`;
+
+const CardsWrappper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 70px 0;
+  width: 90%;
+  background-color: gray;
+`;
