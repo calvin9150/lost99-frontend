@@ -9,13 +9,14 @@ import { actionCreators as postActions } from "../redux/modules/post";
 import Upload from "../elements/Upload";
 
 const Post = (props) => {
+  const history = props.history;
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
   const [title, setTitle] = React.useState("");
   const [contact_num, setContact_num] = React.useState("");
   const [contents, setContents] = React.useState("");
   const changeTitle = (e) => {
-    setTitle(e.target.value); 
+    setTitle(e.target.value);
     // console.log(e.target.value); 타이틀 인풋값
   };
   const changeContact_num = (e) => {
@@ -29,12 +30,13 @@ const Post = (props) => {
   //리덕스에 item,contact_num,contents 저장
   const addPost = () => {
     dispatch(postActions.addPost({ title, contact_num, contents }));
+    history.push("/");
   };
 
   return (
     <Container>
       <CardsWrappper>
-        <div>POST추가 페이지입니다.</div>
+        <div>추가 페이지입니다.</div>
         <Upload />
         <div
           style={{
@@ -53,6 +55,7 @@ const Post = (props) => {
                 ? preview
                 : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png"
             }
+            alt=""
           />
         </div>
         <div>
@@ -76,14 +79,25 @@ const Container = styled.div`
   width: 70vw;
   min-height: 900px;
   background-color: #c0c0c0;
+
+  @media screen and (max-width: 720px) {
+    width: 90vw;
+  }
 `;
 
 const CardsWrappper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 70px 0;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   width: 90%;
-  background-color: gray;
+  /* background-color: gray; */
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 820px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
