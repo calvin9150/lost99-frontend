@@ -59,7 +59,6 @@ const CardLayout = ({ title, contents, img, userId, id, loading }) => {
 
   const onClickCard = useCallback(
     (e) => {
-      alert("클릭");
       history.push(`/detail/${id}`);
     },
     [id]

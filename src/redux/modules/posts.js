@@ -23,6 +23,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
+      id: 1,
     },
     {
       title: "유기곰 주인 찾아요",
@@ -30,6 +31,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
+      id: 2,
     },
     {
       title: "유기곰 주인 찾아요",
@@ -37,6 +39,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
+      id: 3,
     },
     {
       title: "유기곰 주인 찾아요",
@@ -44,6 +47,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
+      id: 4,
     },
     {
       title: "유기곰 주인 찾아요",
@@ -51,6 +55,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
+      id: 5,
     },
     {
       title: "유기곰 주인 찾아요",
@@ -58,6 +63,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "gom",
+      id: 6,
     },
     {
       title: "유기곰 주인 찾아요",
@@ -65,6 +71,7 @@ const initialState = {
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
+      id: 7,
     },
   ],
   isLoading: false,
