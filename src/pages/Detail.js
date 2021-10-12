@@ -1,12 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+//react hook
+import { useSelector } from "react-redux";
 //elements
 
-import { useSelector } from "react-redux";
-
 const Detail = (props) => {
-  const post = useSelector((state) => state.post.list);
+  const id = props.match.params.id;
 
+  // const user_info = useSelector((state) => state.user.user)
+
+  const post_list = useSelector((state) => state.posts.list);//리덕스의 post리스트들
+  
+  const post_idx = post_list.findIndex(p => p.id === id)//리스트 중에서 주소창Id 와 같은 post순번
+
+  const post = post_list[post_idx]; //상세페이지에서 보여줄 post
+  console.log(post_idx)
   return (
     <Container>
       <CardsWrappper>
@@ -28,7 +36,7 @@ const Detail = (props) => {
           />
         </div>
         <div>
-          <text>{props.title}</text>
+          <text>={props.title}</text>
         </div>
         <div>
           <text>{props.contact_number}</text>

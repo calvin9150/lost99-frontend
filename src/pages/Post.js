@@ -4,12 +4,11 @@ import styled from "styled-components";
 //redux & api
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
-
+import { history } from "../redux/configureStore";
 //elements
 import Upload from "../elements/Upload";
 
 const Post = (props) => {
-  const history = props.history; //
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
   const [title, setTitle] = React.useState("");
@@ -29,8 +28,7 @@ const Post = (props) => {
   };
   //리덕스에 item,contact_num,contents 저장
   const addPost = () => {
-    dispatch(postActions.addPost({ title, contact_num, contents }));
-    history.push("/");
+    dispatch(postActions.addPostDB({title, contact_num, contents}));
   };
 
   return (
