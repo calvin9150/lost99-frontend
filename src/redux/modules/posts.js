@@ -1,23 +1,39 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 
-import axios from "axios";
+import { api } from "../../lib/apis";
 
-const GET_POST = "GET_POST";
+const GET_POSTS = "GET_POSTS";
 const LOADING = "LOADING";
+const DELETE_POST = "DELETE_POST";
 
-const getPosts = createAction(GET_POST, (postList) => ({
+const getPosts = createAction(GET_POSTS, (postList) => ({
   postList,
 }));
-const loading = createAction(LOADING, (is_loading) => ({
-  is_loading,
+const loading = createAction(LOADING, (isLoading) => ({
+  isLoading,
 }));
+const deletePost = createAction(DELETE_POST, (postId) => ({ postId }));
 
 const initialState = {
   list: [
     {
       title: "유기곰 주인 찾아요",
       contents:
+        "무척 순한 곰돌이가 주인을 찾고있습니다. 무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.연락바랍니다. 사료값 감당이 안돼요..",
+      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      userId: "tang",
+    },
+    {
+      title: "유기곰 주인 찾아요",
+      contents:
+        "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
+      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      userId: "tang",
+    },
+    {
+      title: "유기곰 주인 찾아요",
+      contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
@@ -33,6 +49,13 @@ const initialState = {
       title: "유기곰 주인 찾아요",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
+      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      userId: "tang",
+    },
+    {
+      title: "유기곰 주인 찾아요",
+      contents:
+        "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "gom",
     },
@@ -43,43 +66,47 @@ const initialState = {
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
     },
-    {
-      title: "유기곰 주인 찾아요",
-      contents:
-        "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      userId: "tang",
-    },
-    {
-      title: "유기곰 주인 찾아요",
-      contents:
-        "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      userId: "tang",
-    },
-    {
-      title: "유기곰 주인 찾아요",
-      contents:
-        "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      userId: "tang",
-    },
   ],
-  is_loading: false,
+  isLoading: false,
 };
 
-const getPostsDB = (start = null, size = null) => {
-  return function (dispatch, getState) {
+const getPostsMiddleware = () => {
+  return (dispatch) => {
     dispatch(loading(true));
+    api
+      .get("/contents")
+      .then((res) => {
+        const postList = res.data;
+        dispatch(getPosts(postList));
+      })
+      .catch((err) => {
+        console.error(err);
+        dispatch(loading(false));
+      });
   };
+};
+
+const deletePostMiddleware = (postId) => (dispatch) => {
+  api
+    .delete(`/contents/${postId}`)
+    .then((res) => dispatch(deletePost(postId)))
+    .catch((err) => console.log("게시글 삭제 실패", err));
 };
 
 export default handleActions(
   {
-    [GET_POST]: (state, action) =>
+    [GET_POSTS]: (state, action) =>
       produce(state, (draft) => {
         draft.list = action.payload.postList;
-        console.log(draft.list);
+        draft.isLoading = false;
+      }),
+    [LOADING]: (state, action) =>
+      produce(state, (draft) => {
+        draft.isLoading = action.payload.isLoading;
+      }),
+    [DELETE_POST]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list = state.list.filter((v) => v.id !== action.payload.postId);
       }),
   },
   initialState
@@ -87,7 +114,8 @@ export default handleActions(
 
 const actionCreators = {
   getPosts,
-  getPostsDB,
+  getPostsMiddleware,
+  deletePostMiddleware,
 };
 
 export { actionCreators };
