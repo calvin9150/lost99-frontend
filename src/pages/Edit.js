@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-//elements 
+//elements
 import Upload from "../elements/Upload";
 
 const Edit = (props) => {
@@ -23,17 +23,16 @@ const Edit = (props) => {
               margin: "auto",
             }}
             src={
-              
-                 "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png"
+              "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png"
             }
           />
         </div>
         <div>
-          <input  />
           <input />
-          <input  />
+          <input />
+          <input />
         </div>
-        <button >수정</button>
+        <button>수정</button>
         (서버 쪽에 저장후)//// 리덕스에 넣어주기
       </CardsWrappper>
     </Container>

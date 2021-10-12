@@ -9,7 +9,7 @@ import { actionCreators as postActions } from "../redux/modules/post";
 import Upload from "../elements/Upload";
 
 const Post = (props) => {
-  const history = props.history;
+  const history = props.history; //
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
   const [title, setTitle] = React.useState("");

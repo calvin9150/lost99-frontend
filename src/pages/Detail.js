@@ -5,9 +5,8 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 const Detail = (props) => {
+  const post = useSelector((state) => state.post.list);
 
-  const post = useSelector((state) => state.post.list)
-  
   return (
     <Container>
       <CardsWrappper>
@@ -25,7 +24,6 @@ const Detail = (props) => {
               height: "100%",
               margin: "auto",
             }}
-
             src={props.image_url}
           />
         </div>
@@ -44,15 +42,11 @@ const Detail = (props) => {
 };
 
 Detail.defaultProps = {
-  title : "지갑 주웠습니다~",
-  contact_number : "0101010101010",
-  contents : "지갑 잊어버린분 ~",
-  image_url: "http://gdimg.gmarket.co.kr/1136457596/still/600?ver=1621482467"
-
-
-}
-
-
+  title: "지갑 주웠습니다~",
+  contact_number: "0101010101010",
+  contents: "지갑 잊어버린분 ~",
+  image_url: "http://gdimg.gmarket.co.kr/1136457596/still/600?ver=1621482467",
+};
 
 export default Detail;
 
