@@ -11,12 +11,15 @@ import Mypage from "../pages/Mypage";
 import Post from "../pages/Post";
 import Edit from "../pages/Edit";
 import Login from "../pages/Login";
-import Signup from "../pages/SIgnup";
+import Signup from "../pages/Signup";
 import Detail from "../pages/Detail";
+
+import Header from "../components/Header";
 
 function App() {
   return (
-    <>
+    <React.Fragment>
+        <Header></Header>
       <ConnectedRouter history={history}>
         <Route path="/" exact component={Main} />
         <Route path="/mypage" exact component={Mypage} />
@@ -26,7 +29,7 @@ function App() {
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
       </ConnectedRouter>
-    </>
+    </React.Fragment>
   );
 }
 
