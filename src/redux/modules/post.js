@@ -1,6 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import { apis } from "../../shared/axios";
+import { api } from "../../lib/apis";
 
 //action type
 const ADD_POST = "ADD_POST";
@@ -14,13 +14,16 @@ const initialState = {
 };
 
 //middlewarse
-const addPostDB = (post) => {
+const addPostsMiddleware = (title, phonenumber, contents, location) => {
   return (dispatch, getState, { history }) => {
-    apis.createPost(post).then((res) => {
-      console.log(res);
-      dispatch(addPost(post))
-      history.push("/")
+    api.post("/contents", {
+      title: title,
+      phonenumber: phonenumber,
+      contents: contents,
+      location: location,
     });
+    dispatch(addPost({ title, phonenumber, contents, location }));
+    history.push("/");
   };
 };
 
@@ -38,7 +41,7 @@ export default handleActions(
 // action creator export
 const actionCreators = {
   addPost,
-  addPostDB,
+  addPostsMiddleware,
 };
 
 export { actionCreators };

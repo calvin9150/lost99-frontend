@@ -9,12 +9,12 @@ const Detail = (props) => {
 
   // const user_info = useSelector((state) => state.user.user)
 
-  const post_list = useSelector((state) => state.posts.list);//리덕스의 post리스트들
-  
-  const post_idx = post_list.findIndex(p => p.id === id)//리스트 중에서 주소창Id 와 같은 post순번
+  const post_list = useSelector((state) => state.posts.list); //리덕스의 post리스트들
+
+  const post_idx = post_list.findIndex((p) => p.id == id); //리스트 중에서 주소창Id 와 같은 post순번
 
   const post = post_list[post_idx]; //상세페이지에서 보여줄 post
-  console.log(post_idx)
+  console.log(post_list);
   return (
     <Container>
       <CardsWrappper>
@@ -30,19 +30,22 @@ const Detail = (props) => {
             style={{
               width: "100%",
               height: "100%",
-              margin: "auto",
+              
             }}
-            src={props.image_url}
+            src={post.image_url}
           />
         </div>
         <div>
-          <text>={props.title}</text>
+          <text>{post.title}</text>
         </div>
         <div>
-          <text>{props.contact_number}</text>
+          <text>{post.phonenumber}</text>
         </div>
         <div>
-          <text>{props.contents}</text>
+          <text>{post.location}</text>
+        </div>
+        <div>
+          <text>{post.contents}</text>
         </div>
       </CardsWrappper>
     </Container>

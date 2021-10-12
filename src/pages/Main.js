@@ -46,7 +46,7 @@ const Main = (props) => {
 
   const postList = useSelector((state) => state.posts.list);
   const loading = useSelector((state) => state.posts.isLoading);
-
+  console.log(postList)
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);

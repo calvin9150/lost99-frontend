@@ -1,0 +1,56 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "contents": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "phonenumber": "typicode",
+      "location": "dlddld",
+      "contents": "asdasd"
+    },
+    {
+      "title": "asdas",
+      "phonenumber": "sdas",
+      "contents": "dasdsd",
+      "location": "dasda",
+      "id": 2
+    },
+    {
+      "title": "asda",
+      "phonenumber": "asdasd",
+      "contents": "asdasdasd",
+      "location": "sdasdasd",
+      "id": 3
+    },
+    {
+      "title": "asd",
+      "phonenumber": "dasda",
+      "contents": "dasdasdasd",
+      "location": "asdasdas",
+      "id": 4
+    },
+    {
+      "title": "awd",
+      "phonenumber": "wsx",
+      "contents": "cscasc",
+      "location": "wsd",
+      "id": 5
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
