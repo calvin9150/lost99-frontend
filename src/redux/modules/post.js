@@ -14,15 +14,16 @@ const initialState = {
 };
 
 //middlewarse
-const addPostsMiddleware = (title, phonenumber, contents, location) => {
+const addPostsMiddleware = (title, phonenumber, contents, location, imgurl) => {
   return (dispatch, getState, { history }) => {
     api.post("/contents", {
       title: title,
       phonenumber: phonenumber,
       contents: contents,
       location: location,
+      imgurl: imgurl,
     });
-    dispatch(addPost({ title, phonenumber, contents, location }));
+    dispatch(addPost({ title, phonenumber, contents, location, imgurl }));
     history.push("/");
   };
 };

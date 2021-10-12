@@ -11,6 +11,8 @@ import Upload from "../elements/Upload";
 const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
+  const imgurl = useSelector((state) => state.image.image_url);
+  
   const [title, setTitle] = React.useState("");
   const [phonenumber, setPhonenumber] = React.useState("");
   const [location, setLocation] = React.useState("");
@@ -25,16 +27,22 @@ const Post = (props) => {
   };
   const changeLocation = (e) => {
     setLocation(e.target.value);
-    // console.log(e.target.value); 내용 인풋값
+    // console.log(e.target.value); 장소 인풋값
   };
   const changeContents = (e) => {
     setContents(e.target.value);
     // console.log(e.target.value); 내용 인풋값
   };
-  //리덕스에 item,contact_num,contents 저장
+  //서버에 넘겨주기
   const addPost = () => {
     dispatch(
-      postActions.addPostsMiddleware(title, phonenumber, contents, location)
+      postActions.addPostsMiddleware(
+        title,
+        phonenumber,
+        contents,
+        location,
+        imgurl,
+      )
     );
   };
 

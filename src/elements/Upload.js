@@ -23,10 +23,16 @@ const Upload = (props) => {
       dispatch(imageActions.setPreview(preview));
     };
   };
+    const uploadDB = () => {
+      let image = fileInput.current.files[0];
+      // console.log(image)
+      dispatch(imageActions.uploadImageDB(image));
+    }
 
   return (
     <React.Fragment>
       <input type="file" ref={fileInput} onChange={selectFile} />
+      <button onClick={uploadDB}>업로드</button>
     </React.Fragment>
   );
 };
