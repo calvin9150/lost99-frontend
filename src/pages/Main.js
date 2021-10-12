@@ -67,6 +67,7 @@ const Main = (props) => {
                 img={v.img}
                 userId={v.userId}
                 id={v.id}
+                loading={loading}
               />
             );
           })}

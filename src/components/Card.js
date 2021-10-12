@@ -38,13 +38,14 @@ const Buttons = styled.div`
 `;
 
 const Wrapper = styled.div`
+  display: ${(props) => (props.loading ? "none" : "unset")};
   margin: 20px;
   user-select: none;
 `;
 
 const LoginId = "gom";
 
-const CardLayout = ({ title, contents, img, userId, id }) => {
+const CardLayout = ({ title, contents, img, userId, id, loading }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -58,7 +59,6 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
 
   const onClickCard = useCallback(
     (e) => {
-      alert("클릭");
       history.push(`/detail/${id}`);
     },
     [id]
@@ -67,10 +67,10 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
   const onClickDelete = useCallback(() => {
     dispatch(postsActions.deletePostMiddleware(id));
     console.log(id);
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
-    <Wrapper>
+    <Wrapper loading={loading}>
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
