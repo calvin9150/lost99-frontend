@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
+import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,9 +10,14 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import { history } from "../redux/configureStore";
 import { actionCreators as postsActions } from "../redux/modules/posts";
+import { CardHeader } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Collapse from "@material-ui/core/Collapse";
 
 const useStyles = makeStyles({
   root: {
@@ -45,11 +51,23 @@ const Wrapper = styled.div`
 
 const LoginId = "gom";
 
-const CardLayout = ({ title, contents, img, userId, id }) => {
+const CardLayout = ({
+  title,
+  contents,
+  img,
+  userId,
+  id,
+  location = "전국",
+}) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [isMine, setIsMine] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   useEffect(() => {
     if (userId === LoginId) {
@@ -75,6 +93,7 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
   return (
     <Wrapper load={false}>
       <Card className={classes.root}>
+        <CardHeader title={title} subheader={location} onClick={onClickCard} />
         <CardMedia
           className={classes.media}
           image={img}
@@ -82,15 +101,6 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
           onClick={onClickCard}
         />
         <CardContent className={classes.content}>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            noWrap={true}
-            onClick={onClickCard}
-          >
-            {title}
-          </Typography>
           <Typography
             variant="body2"
             color="textSecondary"

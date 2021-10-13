@@ -87,6 +87,7 @@ const Main = (props) => {
             img={v.imgurl}
             userId={v.username}
             id={v.id}
+            location={v.location}
           />
         ))}
       </CardsWrappper>
