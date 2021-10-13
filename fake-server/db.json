@@ -18,35 +18,40 @@
       "id": 1,
       "title": "json-server",
       "phonenumber": "typicode",
-      "location": "dlddld",
-      "contents": "asdasd"
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "서울",
+      "contents": "서울입니다"
     },
     {
       "title": "asdas",
       "phonenumber": "sdas",
-      "contents": "dasdsd",
-      "location": "dasda",
+      "contents": "서울입니다2",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "서울",
       "id": 2
     },
     {
       "title": "asda",
       "phonenumber": "asdasd",
       "contents": "asdasdasd",
-      "location": "sdasdasd",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "부산",
       "id": 3
     },
     {
       "title": "asd",
       "phonenumber": "dasda",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "contents": "dasdasdasd",
-      "location": "asdasdas",
+      "location": "경기",
       "id": 4
     },
     {
       "title": "awd",
       "phonenumber": "wsx",
       "contents": "cscasc",
-      "location": "wsd",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "충북",
       "id": 5
     },
     {
@@ -54,6 +59,7 @@
       "phonenumber": "23123",
       "contents": "3123123",
       "location": "12312",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "id": 6
     },
     {
@@ -61,12 +67,14 @@
       "phonenumber": "asdasd",
       "contents": "sadasd",
       "location": "sdasdddd",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "id": 7
     },
     {
       "title": "1232",
       "phonenumber": "4",
       "contents": "6666",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "415",
       "id": 8
     },
@@ -75,6 +83,7 @@
       "phonenumber": "123",
       "contents": "123",
       "location": "123",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "id": 9
     },
     {

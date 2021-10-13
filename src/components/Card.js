@@ -52,6 +52,7 @@ const CardLayout = ({ title, contents, img, userId, id, loading }) => {
   const [isMine, setIsMine] = useState(false);
 
   useEffect(() => {
+    console.log("userId", userId, LoginId);
     if (userId === LoginId) {
       setIsMine(true);
     }
@@ -65,9 +66,12 @@ const CardLayout = ({ title, contents, img, userId, id, loading }) => {
   );
 
   const onClickDelete = useCallback(() => {
-    dispatch(postsActions.deletePostMiddleware(id));
-    console.log(id);
-  }, [id, dispatch]);
+    if (window.confirm(`[ ${title} ]을 삭제하실건가요?`)) {
+      dispatch(postsActions.deletePostMiddleware(id));
+      setIsMine(false);
+      return;
+    }
+  }, [id, dispatch, title]);
 
   return (
     <Wrapper loading={loading}>

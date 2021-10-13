@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Card from "../components/Card";
-import { actionCreators as postsActions } from "../redux/modules/posts";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { useSelector, useDispatch } from "react-redux";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+import Card from "../components/Card";
+import { actionCreators as postsActions } from "../redux/modules/posts";
 import Modal from "../components/Modal";
+import Map from "../components/Map";
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   margin: auto;
   width: 60vw;
   min-height: 900px;
@@ -36,8 +39,8 @@ const CardsWrappper = styled.div`
     display: flex;
     flex-direction: column;
     grid-template-columns: repeat(1, 1fr);
-    width: 90%;
-    margin: 0;
+    width: 100%;
+    margin: auto;
   }
 `;
 
@@ -46,7 +49,7 @@ const Main = (props) => {
 
   const postList = useSelector((state) => state.posts.list);
   const loading = useSelector((state) => state.posts.isLoading);
-  console.log(postList)
+  console.log(postList);
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);
@@ -57,6 +60,9 @@ const Main = (props) => {
         <Modal visible={loading}>
           <CircularProgress />
         </Modal>
+
+        <Map />
+
         <CardsWrappper>
           {postList.map((v, i) => {
             return (
@@ -64,7 +70,7 @@ const Main = (props) => {
                 key={i}
                 title={v.title}
                 contents={v.contents}
-                img={v.img}
+                img={v.imgurl}
                 userId={v.userId}
                 id={v.id}
                 loading={loading}
