@@ -74,7 +74,7 @@ const CardLayout = ({ title, contents, img, userId, id, loading }) => {
   }, [id, dispatch, title]);
 
   return (
-    <Wrapper loading={loading}>
+    <Wrapper loading={false}>
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}

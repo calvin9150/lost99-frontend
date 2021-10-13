@@ -1,4 +1,3 @@
-import { CloudDoneTwoTone } from "@mui/icons-material";
 import React, { useCallback, useState } from "react";
 import { VectorMap } from "react-jvectormap";
 import styled from "styled-components";
@@ -22,17 +21,6 @@ const RegionName = [
   ["KR-46", "전남"],
   ["KR-31", "울산"],
 ];
-
-const mapData = {
-  CN: 100000,
-  IN: 9900,
-  SA: 86,
-  EG: 70,
-  SE: 0,
-  FI: 0,
-  FR: 0,
-  US: 20,
-};
 
 const Container = styled.div`
   display: flex;
@@ -134,15 +122,6 @@ const Map = () => {
           }}
           regionsSelectable={true}
           regionsSelectableOne={true}
-          // series={{
-          //   regions: [
-          //     {
-          //       values: mapData, //this is your data
-          //       scale: ["#146804", "#ff0000"], //your color game's here
-          //       normalizeFunction: "polynomial",
-          //     },
-          //   ],
-          // }}
         />
       </MapLayout>
     </Container>

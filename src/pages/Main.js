@@ -71,7 +71,7 @@ const Main = (props) => {
                 title={v.title}
                 contents={v.contents}
                 img={v.imgurl}
-                userId={v.userId}
+                userId={v.username}
                 id={v.id}
                 loading={loading}
               />
