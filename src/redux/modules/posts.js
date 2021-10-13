@@ -50,7 +50,7 @@ const initialState = {
       id: 4,
     },
     {
-      title: "유기곰 주인 찾아요",
+      title: "유기곰 주인 찾아요5",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
@@ -58,7 +58,7 @@ const initialState = {
       id: 5,
     },
     {
-      title: "유기곰 주인 찾아요",
+      title: "유기곰 주인 찾아요6",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
@@ -66,7 +66,7 @@ const initialState = {
       id: 6,
     },
     {
-      title: "유기곰 주인 찾아요",
+      title: "유기곰 주인 찾아요7",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
       img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
@@ -97,7 +97,10 @@ const deletePostMiddleware = (postId) => (dispatch) => {
   api
     .delete(`/contents/${postId}`)
     .then((res) => dispatch(deletePost(postId)))
-    .catch((err) => console.log("게시글 삭제 실패", err));
+    .catch((err) => {
+      console.log("게시글 삭제 실패", err);
+      dispatch(deletePost(postId));
+    });
 };
 
 export default handleActions(
