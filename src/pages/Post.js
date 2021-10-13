@@ -4,31 +4,46 @@ import styled from "styled-components";
 //redux & api
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
-import { history } from "../redux/configureStore";
+
 //elements
 import Upload from "../elements/Upload";
 
 const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
+  const imgurl = useSelector((state) => state.image.image_url);
+  
   const [title, setTitle] = React.useState("");
-  const [contact_num, setContact_num] = React.useState("");
+  const [phonenumber, setPhonenumber] = React.useState("");
+  const [location, setLocation] = React.useState("");
   const [contents, setContents] = React.useState("");
   const changeTitle = (e) => {
     setTitle(e.target.value);
     // console.log(e.target.value); 타이틀 인풋값
   };
-  const changeContact_num = (e) => {
-    setContact_num(e.target.value);
+  const changePhonenumber = (e) => {
+    setPhonenumber(e.target.value);
     // console.log(e.target.value); 연락처 인풋값
+  };
+  const changeLocation = (e) => {
+    setLocation(e.target.value);
+    // console.log(e.target.value); 장소 인풋값
   };
   const changeContents = (e) => {
     setContents(e.target.value);
     // console.log(e.target.value); 내용 인풋값
   };
-  //리덕스에 item,contact_num,contents 저장
+  //서버에 넘겨주기
   const addPost = () => {
-    dispatch(postActions.addPostDB({title, contact_num, contents}));
+    dispatch(
+      postActions.addPostsMiddleware(
+        title,
+        phonenumber,
+        contents,
+        location,
+        imgurl,
+      )
+    );
   };
 
   return (
@@ -58,7 +73,8 @@ const Post = (props) => {
         </div>
         <div>
           <input value={title} onChange={changeTitle} />
-          <input value={contact_num} onChange={changeContact_num} />
+          <input value={phonenumber} onChange={changePhonenumber} />
+          <input value={location} onChange={changeLocation} />
           <input value={contents} onChange={changeContents} />
         </div>
         <button onClick={addPost}>추가</button>
