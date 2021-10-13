@@ -38,21 +38,20 @@ const Buttons = styled.div`
 `;
 
 const Wrapper = styled.div`
-  display: ${(props) => (props.loading ? "none" : "unset")};
-  margin: 20px;
+  display: ${(props) => (props.loading === "true" ? "none" : "unset")};
+  margin: 35px 20px 20px;
   user-select: none;
 `;
 
 const LoginId = "gom";
 
-const CardLayout = ({ title, contents, img, userId, id, loading }) => {
+const CardLayout = ({ title, contents, img, userId, id }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [isMine, setIsMine] = useState(false);
 
   useEffect(() => {
-    console.log("userId", userId, LoginId);
     if (userId === LoginId) {
       setIsMine(true);
     }
@@ -74,7 +73,7 @@ const CardLayout = ({ title, contents, img, userId, id, loading }) => {
   }, [id, dispatch, title]);
 
   return (
-    <Wrapper loading={false}>
+    <Wrapper loading={"false"}>
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}

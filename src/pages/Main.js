@@ -15,7 +15,7 @@ const Container = styled.div`
   flex-direction: column;
   margin: auto;
   width: 60vw;
-  min-height: 900px;
+  /* min-height: 900px; */
   /* background-color: #c0c0c0; */
 
   @media screen and (max-width: 720px) {
@@ -44,12 +44,32 @@ const CardsWrappper = styled.div`
   }
 `;
 
+const NoList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 320px;
+  margin-top: 0.8em;
+  background-color: rgba(150, 150, 150, 0.123);
+  font-size: 3em;
+  border-radius: 0.5em;
+`;
+
 const Main = (props) => {
   const dispatch = useDispatch();
 
   const postList = useSelector((state) => state.posts.list);
   const loading = useSelector((state) => state.posts.isLoading);
-  console.log(postList);
+  const mapSelected = useSelector((state) => state.posts.mapSelected);
+
+  const selectedList = postList.filter((v) => {
+    if (mapSelected === v.location || mapSelected === "전국") {
+      return true;
+    }
+    return false;
+  });
+
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);
@@ -60,11 +80,9 @@ const Main = (props) => {
         <Modal visible={loading}>
           <CircularProgress />
         </Modal>
-
         <Map />
-
         <CardsWrappper>
-          {postList.map((v, i) => {
+          {selectedList.map((v, i) => {
             return (
               <Card
                 key={i}
@@ -73,11 +91,13 @@ const Main = (props) => {
                 img={v.imgurl}
                 userId={v.username}
                 id={v.id}
-                loading={loading}
               />
             );
           })}
         </CardsWrappper>
+        {selectedList.length === 0 && (
+          <NoList>이 지역에는 접수된 분실물이 없어요..</NoList>
+        )}
       </Container>
     </>
   );
