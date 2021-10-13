@@ -15,7 +15,7 @@ const Container = styled.div`
   flex-direction: column;
   margin: auto;
   width: 60vw;
-  min-height: 900px;
+  /* min-height: 900px; */
   /* background-color: #c0c0c0; */
 
   @media screen and (max-width: 720px) {
@@ -49,7 +49,15 @@ const Main = (props) => {
 
   const postList = useSelector((state) => state.posts.list);
   const loading = useSelector((state) => state.posts.isLoading);
-  console.log(postList);
+  const mapSelected = useSelector((state) => state.posts.mapSelected);
+
+  const selectedList = postList.filter((v) => {
+    if (mapSelected === v.location || mapSelected === "전국") {
+      return true;
+    }
+    return false;
+  });
+
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);
@@ -60,11 +68,9 @@ const Main = (props) => {
         <Modal visible={loading}>
           <CircularProgress />
         </Modal>
-
         <Map />
-
         <CardsWrappper>
-          {postList.map((v, i) => {
+          {selectedList.map((v, i) => {
             return (
               <Card
                 key={i}

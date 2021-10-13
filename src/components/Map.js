@@ -1,6 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { VectorMap } from "react-jvectormap";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import Button from "@material-ui/core/Button";
+
+import { actionCreators as postsActions } from "../redux/modules/posts";
+import RegionText from "./RegionText";
 
 const RegionName = [
   ["KR-26", "부산"],
@@ -36,45 +41,39 @@ const Container = styled.div`
 
   @media screen and (max-width: 800px) {
     height: 300px;
-    flex-direction: column;
-    margin: 50px 0 200px;
+    flex-direction: column-reverse;
+    margin: 300px 0 50px;
   }
 `;
 
 const MapLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
 
   @media screen and (max-width: 800px) {
+    margin-top: 1em;
     width: 100%;
   }
-`;
 
-const RegionTextLayout = styled.div`
-  text-align: right;
-  width: 50%;
-  font-size: 4em;
-  padding-top: 1em;
-  color: gray;
+  button {
+    width: 30%;
+    top: -1em;
+    right: 1em;
 
-  @media screen and (max-width: 800px) {
-    text-align: center;
-    width: 100%;
-    font-size: 2em;
-    padding-top: 0;
+    @media screen and (max-width: 800px) {
+      right: 0;
+      top: 0;
+      width: 50%;
+    }
   }
-`;
-
-const RegionText = styled.span`
-  font-size: 1.5em;
-  color: black;
 `;
 
 const Map = () => {
-  const [regionName, setRegionName] = useState("대한민국");
+  const dispatch = useDispatch();
 
-  const handleClick = (e, countryCode) => {
-    setRegionName(codeConverter(countryCode));
-  };
+  const [selectAll, setSelectAll] = useState(true);
 
   const codeConverter = useCallback((code) => {
     let name = null;
@@ -86,45 +85,60 @@ const Map = () => {
     return name;
   }, []);
 
-  return (
-    <Container>
-      <RegionTextLayout>
-        LOST IN <br />
-        <RegionText>{regionName}</RegionText>
-      </RegionTextLayout>
-      <MapLayout>
-        <VectorMap
-          map={"kr_mill"}
-          backgroundColor="transparent" //change it to ocean blue: #0077be
-          zoomOnScroll={false}
-          containerStyle={{
-            width: "100%",
-            height: "100%",
-          }}
-          onRegionClick={handleClick} //gets the country code
-          // containerClassName="map"
-          regionStyle={{
-            initial: {
-              fill: "#e4e4e4",
-              "fill-opacity": 0.9,
-              stroke: "none",
-              "stroke-width": 0,
-              "stroke-opacity": 0,
-            },
-            hover: {
-              "fill-opacity": 0.5,
-              cursor: "pointer",
-            },
-            selected: {
-              fill: "#2938bc", //color for the clicked country
-            },
-            selectedHover: {},
-          }}
-          regionsSelectable={true}
-          regionsSelectableOne={true}
-        />
-      </MapLayout>
-    </Container>
+  const handleClick = useCallback(
+    (e, countryCode) => {
+      dispatch(postsActions.updateMapSelected(codeConverter(countryCode)));
+    },
+    [dispatch, codeConverter]
+  );
+
+  const onClickAllBtn = useCallback(() => {
+    setSelectAll(!selectAll);
+    dispatch(postsActions.updateMapSelected("전국"));
+  }, [dispatch, selectAll]);
+
+  return useMemo(
+    () => (
+      <Container>
+        <RegionText />
+        <MapLayout>
+          <Button variant="contained" onClick={onClickAllBtn}>
+            전국
+          </Button>
+          <VectorMap
+            map={"kr_mill"}
+            backgroundColor="transparent" //change it to ocean blue: #0077be
+            zoomOnScroll={false}
+            containerStyle={{
+              width: "100%",
+              height: "100%",
+            }}
+            onRegionClick={handleClick} //gets the country code
+            // containerClassName="map"
+            regionStyle={{
+              initial: {
+                fill: "#e4e4e4",
+                "fill-opacity": 0.9,
+                stroke: "none",
+                "stroke-width": 0,
+                "stroke-opacity": 0,
+              },
+              hover: {
+                "fill-opacity": 0.5,
+                cursor: "pointer",
+              },
+              selected: {
+                fill: "#2938bc", //color for the clicked country
+              },
+              selectedHover: {},
+            }}
+            regionsSelectable={true}
+            regionsSelectableOne={true}
+          />
+        </MapLayout>
+      </Container>
+    ),
+    [handleClick, onClickAllBtn]
   );
 };
 

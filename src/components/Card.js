@@ -45,14 +45,13 @@ const Wrapper = styled.div`
 
 const LoginId = "gom";
 
-const CardLayout = ({ title, contents, img, userId, id, loading }) => {
+const CardLayout = ({ title, contents, img, userId, id }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [isMine, setIsMine] = useState(false);
 
   useEffect(() => {
-    console.log("userId", userId, LoginId);
     if (userId === LoginId) {
       setIsMine(true);
     }
