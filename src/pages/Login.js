@@ -3,9 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -14,9 +11,29 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
+import {useDispatch} from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
+
+
+
 const Login = (props) => {
 
   const theme = createTheme();
+  const dispatch = useDispatch();
+
+  const [username, setUserName] = React.useState('');
+  const [password, setPwd] = React.useState('');
+
+  const login = () => {
+
+    console.log(username);       
+    if(username === "" || password === ""){
+        window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요");
+        return;
+    }
+
+    dispatch(userActions.loginDB(username, password));
+};
 
 
   return (
@@ -49,6 +66,9 @@ const Login = (props) => {
             autoComplete="id"
             placeholder="아이디를 입력하세요"
             autoFocus
+            onChange={(e) => {
+              setUserName(e.target.value);
+          }}
           />
           <TextField
             margin="normal"
@@ -60,12 +80,18 @@ const Login = (props) => {
             id="password"
             autoComplete="current-password"
             placeholder="비밀번호를 입력하세요"
+            onChange={(e) => {
+              setPwd(e.target.value);
+          }}
           />
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 1.5 }}
+            onClick={() => {
+              console.log("로그인버튼클릭!");
+              login()}}
           >
             로그인하기
           </Button>

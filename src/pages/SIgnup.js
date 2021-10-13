@@ -4,9 +4,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -14,11 +11,46 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import {useDispatch} from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
+
+import { emailCheck } from "../shared/Common";
+
 
 const Signup = (props) => {
 
   const theme = createTheme();
-  
+  const dispatch = useDispatch();
+
+   // signupDB에 인자로 들어갈 입력된 username, pwd, pwdcheck 가져오기 
+
+   const [username, setUserName] = React.useState('');
+   const [email, setEmail] = React.useState('');
+   const [password, setPwd] = React.useState('');
+   const [pwdcheck, setPwdCheck] = React.useState('');
+
+  //  회원가입하기 버튼 누르면 호출되는 로그인 함수 
+
+  const signup = () => {
+
+    if (username ==="" || email ==="" || password ===""){
+        window.alert("아이디, 이메일, 패스워드를 모두 입력해주세요");
+        return;
+    }
+    
+    if(!emailCheck(email)){
+        window.alert("이메일 형식이 맞지 않습니다");
+        return;
+    }
+
+    if(password!==pwdcheck){
+        window.alert("패스워드와 패스워드 확인이 일치하지 않습니다");
+        return;
+    }
+
+    dispatch(userActions.signupDB(username, email, password));
+
+}
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,8 +82,27 @@ const Signup = (props) => {
                   placeholder="사용하실 아이디를 입력하세요"
                   name="id"
                   autoComplete="id"
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                  }}
                 />
               </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="이메일"
+                  placeholder="사용하실 이메일을 입력하세요"
+                  name="email"
+                  autoComplete="email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -62,6 +113,9 @@ const Signup = (props) => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e) => {
+                    setPwd(e.target.value);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -72,17 +126,21 @@ const Signup = (props) => {
                   label="패스워드 확인"
                   placeholder="위와 동일하게 패스워드를 입력해주세요"
                   type="password"
-                  id="password"
+                  id="pwd_check"
                   autoComplete="new-password"
+                  onChange={(e) => {
+                    setPwdCheck(e.target.value);
+                  }}
                 />
               </Grid>
               
             </Grid>
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={signup}
             >
               회원가입하기
             </Button>
