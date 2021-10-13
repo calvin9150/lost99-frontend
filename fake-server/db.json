@@ -123,7 +123,6 @@
   ],
   "profile": {
     "name": "typicode"
-<<<<<<< HEAD
   },
   "user": [
     {
@@ -147,9 +146,19 @@
       "user_id": "testing4",
       "password": "testing4",
       "id": 3
+    },
+    {
+      "username": "signupworking",
+      "email": "work@work.com",
+      "password": "work1234",
+      "id": 4
+    }
+  ],
+  "login": [
+    {
+      "username": "test1234",
+      "password": "test1234",
+      "id": 1
     }
   ]
-=======
-  }
->>>>>>> fd98e15403778ea332bbfae7910daf390c4c5872
 }

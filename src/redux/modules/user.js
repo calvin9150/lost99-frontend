@@ -8,10 +8,13 @@ import { api } from "../../lib/apis";
 
 
 const SET_USER = "SET_USER";
+const LOG_IN = 'LOG_IN';
+
 
 
 // ACTION CREATORS
 const setUser = createAction(SET_USER, (user)=>({user}));
+const Login = createAction(LOG_IN, (user) => ({user}));
 
 const initialState = {
     user: null,
@@ -42,6 +45,26 @@ const signupDB = (username, email, password) => {
 	}
 };
 
+
+const loginDB = (username, password) => {
+	return function (dispatch, getState, { history }) {
+		api
+			.post('/login', { username: username, password: password })
+			.then((res) => {
+				// setCookie('token', res.data[1].token, 7);
+				// localStorage.setItem('username', res.data[0].username);
+				dispatch(Login({ username: username }));
+				history.replace('/');
+			})
+			.catch((err) => {
+                console.log(err);
+				window.alert('회원정보가 존재하지 않습니다!');
+			});
+	};
+};
+
+
+
 // Reducer
 
 export default handleActions({
@@ -50,12 +73,13 @@ export default handleActions({
         draft.user = action.payload.user;
         draft.is_login = true;
     }),
-    // [LOG_OUT]:(state, action) => produce(state, (draft) => {
-    //     deleteCookie("is_login");
-    //     draft.user = null;
-    //     draft.is_login = false;
-    // }),
-    // [GET_USER]:(state, action) => produce(state, () => {}),
+ 
+    [LOG_IN]: (state, action) =>
+			produce(state, (draft) => {
+				draft.user = action.payload.user;
+				draft.is_login = true;
+			}),
+
 
 },
     initialState
@@ -64,6 +88,7 @@ export default handleActions({
 
 const actionCreators = {
     signupDB,
+    loginDB,
 };
 
 export { actionCreators };
