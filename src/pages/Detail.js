@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { api } from "../lib/apis";
+import { actionCreators as postsActions } from "../redux/modules/posts";
 //react hook
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 //elements
 
 const Detail = (props) => {
+  const dispatch = useDispatch();
   const id = props.match.params.id;
 
   // const user_info = useSelector((state) => state.user.user)
@@ -12,70 +15,116 @@ const Detail = (props) => {
   const post_list = useSelector((state) => state.posts.list); //리덕스의 post리스트들
 
   const post_idx = post_list.findIndex((p) => p.id == id); //리스트 중에서 주소창Id 와 같은 post순번
-
+  // console.log(post_list)
+  // console.log(id)
   const post = post_list[post_idx]; //상세페이지에서 보여줄 post
-  console.log(post_list);
-  return (
-    <Container>
-      <CardsWrappper>
-        <div>상세 페이지입니다.</div>
+  // console.log(post_list);
 
-        <div
-          style={{
-            width: "100%",
-            height: "300px",
-          }}
-        >
+  useEffect(() => {
+    dispatch(postsActions.getPostsMiddleware());
+  }, [dispatch]);
+
+  return (
+    <Container style={{ padding: "16px" }}>
+      <Grid style={{ padding: "0px" }}>
+        <PreviewGrid>
           <img
             style={{
               width: "100%",
               height: "100%",
-              
             }}
-            src={post.image_url}
+            src={post&&post.imgurl}
+            alt=""
           />
-        </div>
-        <div>
-          <text>{post.title}</text>
-        </div>
-        <div>
-          <text>{post.phonenumber}</text>
-        </div>
-        <div>
-          <text>{post.location}</text>
-        </div>
-        <div>
-          <text>{post.contents}</text>
-        </div>
-      </CardsWrappper>
+        </PreviewGrid>
+      </Grid>
+
+      <Grid style={{ padding: "8px" }}>
+        <Grid style={{ padding: "8px 0px" }}>
+          <Title>{post&&post.title}</Title>
+        </Grid>
+        <Grid style={{ padding: "8px 0px" }}>
+          <Label>location</Label>
+          <Text>{post&&post.location}</Text>
+        </Grid>
+        <Grid style={{ padding: "8px 0px" }}>
+          <Label>Contact number</Label>
+          <Text>{post&&post.phonenumber}</Text>
+        </Grid>
+        <Grid style={{ padding: "8px 0px" }}>
+          <Label>Contents</Label>
+          <Text>{post&&post.contents}</Text>
+        </Grid>
+      </Grid>
     </Container>
   );
-};
-
-Detail.defaultProps = {
-  title: "지갑 주웠습니다~",
-  contact_number: "0101010101010",
-  contents: "지갑 잊어버린분 ~",
-  image_url: "http://gdimg.gmarket.co.kr/1136457596/still/600?ver=1621482467",
 };
 
 export default Detail;
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  width: 80vw;
+  height: auto;
   margin: auto;
-  width: 70vw;
-  min-height: 900px;
-  background-color: #c0c0c0;
+  justify-content: space-around;
+
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 720px) {
+    width: 90vw;
+  }
 `;
 
-const CardsWrappper = styled.div`
+const Grid = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 70px 0;
-  width: 90%;
-  background-color: gray;
+  justify-content: center;
+  width: 35vw;
+  margin: 10px 0px;
+  overflow: hidden;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 820px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const PreviewGrid = styled.div`
+  width: 35vw;
+  height: auto;
+  margin: 10px auto;
+  box-sizing: border-box;
+  border: 1px solid black;
+  overflow: hidden;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 820px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+// const Image = styled.img`
+//   width: 35vw;
+//   height: auto;
+//   object-fit: cover;
+// `;
+
+const Title = styled.h1`
+  font-size: 60px;
+  margin: 0px;
+`;
+
+const Text = styled.p`
+  size: 10px;
+`;
+
+const Label = styled.p`
+  margin: 0px;
+  font-size: 30px;
+  font-weight: bold;
 `;

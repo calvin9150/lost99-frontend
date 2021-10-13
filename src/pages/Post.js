@@ -7,8 +7,27 @@ import { actionCreators as postActions } from "../redux/modules/post";
 
 //elements
 import Upload from "../elements/Upload";
-import Checkboxs from "../elements/Checkbox";
-import Select from "../elements/Select"
+
+//material
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+
+import Button from "@material-ui/core/Button";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+
+import TextField from "@material-ui/core/TextField";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 const Post = (props) => {
   const dispatch = useDispatch();
@@ -17,97 +36,130 @@ const Post = (props) => {
 
   const [title, setTitle] = React.useState("");
   const [phonenumber, setPhonenumber] = React.useState("");
-  // const [location, setLocation] = React.useState("");
+  const [location, setLocation] = React.useState("");
   const [contents, setContents] = React.useState("");
+
   const changeTitle = (e) => {
     setTitle(e.target.value);
-    // console.log(e.target.value); 타이틀 인풋값
+    console.log(e.target.value);
   };
   const changePhonenumber = (e) => {
     setPhonenumber(e.target.value);
-    // console.log(e.target.value); 연락처 인풋값
+    console.log(e.target.value);
   };
-  // const changeLocation = (e) => {
-  //   setLocation(e.target.value);
-  //   // console.log(e.target.value); 장소 인풋값
-  // };
+  const changeLocation = (e) => {
+    setLocation(e.target.value);
+    console.log(e.target.value);
+  };
   const changeContents = (e) => {
     setContents(e.target.value);
-    // console.log(e.target.value); 내용 인풋값
+    console.log(e.target.value);
   };
-  //서버에 넘겨주기
+
   const addPost = () => {
     dispatch(
       postActions.addPostsMiddleware(
         title,
         phonenumber,
         contents,
-        // location,
+        location,
         imgurl
       )
     );
   };
+  const classes = useStyles();
 
-  // const location = [
-  //   "부산",
-  //   "대구",
-  //   "대전",
-  //   "강원",
-  //   "광주",
-  //   "경기",
-  //   "인천",
-  //   "제주",
-  //   "충북",
-  //   "경북",
-  //   "전북",
-  //   "세종",
-  //   "서울",
-  //   "충남",
-  //   "경북",
-  //   "전남",
-  //   "울산",
-  // ];
-  console.log(location)
+  const locationName = [
+    "부산",
+    "대구",
+    "대전",
+    "강원",
+    "광주",
+    "경기",
+    "인천",
+    "제주",
+    "충북",
+    "경북",
+    "전북",
+    "세종",
+    "서울",
+    "충남",
+    "경남",
+    "전남",
+    "울산",
+  ];
   return (
-    <Container>
-      <CardsWrappper>
-        <div>추가 페이지입니다.</div>
+    <Container style={{ padding: "16px" }}>
+      <Grid style={{ padding: "0px" }}>
         <Upload />
-        <div
-          style={{
-            width: "100%",
-            height: "300px",
-          }}
-        >
-          <img
-            style={{
-              width: "100%",
-              height: "100%",
-              margin: "auto",
-            }}
+        <PreviewGrid>
+          <Image
             src={
               preview
                 ? preview
                 : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png"
             }
-            alt=""
           />
-        </div>
-        <div>
-          <input value={title} onChange={changeTitle} />
-          <input value={phonenumber} onChange={changePhonenumber} />
-          {/* <input value={location} onChange={changeLocation} /> */}
-          <input value={contents} onChange={changeContents} />
-        </div>
-        <button onClick={addPost}>추가</button>
-          {/* {location.map((l,i) => {
-            return (
-              
-            )
-          })} */}
-          <Select onChange={}/>
-          
-      </CardsWrappper>
+        </PreviewGrid>
+      </Grid>
+
+      <Grid style={{ padding: "8px" }}>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">위치</InputLabel>
+          <Select value={location} onChange={changeLocation}>
+            {locationName.map((l, i) => {
+              return (
+                <MenuItem key={i} value={l}>
+                  {l}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+        <Grid style={{ padding: "8px 0px" }}>
+          <TextField
+            id="outlined-secondary"
+            label="제목"
+            variant="outlined"
+            color="secondary"
+            size="small"
+            value={title}
+            onChange={changeTitle}
+          />
+        </Grid>
+        <Grid style={{ padding: "8px 0px" }}>
+          <TextField
+            id="outlined-secondary"
+            label="연락처"
+            variant="outlined"
+            color="secondary"
+            size="small"
+            value={phonenumber}
+            onChange={changePhonenumber}
+          />
+        </Grid>
+        <Grid style={{ padding: "8px 0px" }}>
+          <TextField
+            id="outlined-secondary"
+            label="내용"
+            variant="outlined"
+            color="secondary"
+            size="small"
+            value={contents}
+            onChange={changeContents}
+          />
+        </Grid>
+
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          className={classes.margin}
+          onClick={addPost}
+        >
+          게시글 추가
+        </Button>
+      </Grid>
     </Container>
   );
 };
@@ -116,25 +168,25 @@ export default Post;
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  width: 80vw;
+  height: auto;
   margin: auto;
-  width: 70vw;
-  min-height: 900px;
-  background-color: #c0c0c0;
+  justify-content: space-around;
 
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 720px) {
     width: 90vw;
   }
 `;
 
-const CardsWrappper = styled.div`
+const Grid = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 90%;
-  /* background-color: gray; */
+  width: 35vw;
+  margin: 10px 0px;
+  overflow: hidden;
   @media screen and (max-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -142,4 +194,26 @@ const CardsWrappper = styled.div`
   @media screen and (max-width: 820px) {
     grid-template-columns: repeat(1, 1fr);
   }
+`;
+
+const PreviewGrid = styled.div`
+  width: 35vw;
+  height: auto;
+  margin: 10px auto;
+  box-sizing: border-box;
+  border: 1px solid black;
+  overflow: hidden;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 820px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const Image = styled.img`
+  width: 35vw;
+  height: auto;
+  object-fit: cover;
 `;

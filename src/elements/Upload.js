@@ -1,10 +1,20 @@
 import React from "react";
-import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
 import { actionCreators as imageActions } from "../redux/modules/image";
+//material
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
-//사진업로드 input element
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
 const Upload = (props) => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const fileInput = React.useRef();
 
@@ -23,18 +33,32 @@ const Upload = (props) => {
       dispatch(imageActions.setPreview(preview));
     };
   };
-    const uploadDB = () => {
-      let image = fileInput.current.files[0];
-      // console.log(image)
-      dispatch(imageActions.uploadImageDB(image));
-    }
+  const uploadDB = () => {
+    let image = fileInput.current.files[0];
+    // console.log(image)
+    dispatch(imageActions.uploadImageDB(image));
+  };
 
   return (
     <React.Fragment>
       <input type="file" ref={fileInput} onChange={selectFile} />
-      <button onClick={uploadDB}>업로드</button>
+      
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          className={classes.margin}
+          onClick={uploadDB}
+          style={{
+            margin:"7px 0px 0px 0px"}}
+        >
+          사진 업로드
+        </Button>
+      
     </React.Fragment>
   );
 };
 
 export default Upload;
+
+
