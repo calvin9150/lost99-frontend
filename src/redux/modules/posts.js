@@ -21,7 +21,8 @@ const initialState = {
       title: "유기곰 주인 찾아요",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
       id: 1,
     },
@@ -29,7 +30,8 @@ const initialState = {
       title: "유기곰 주인 찾아요",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
       id: 2,
     },
@@ -37,7 +39,8 @@ const initialState = {
       title: "유기곰 주인 찾아요",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
       id: 3,
     },
@@ -45,7 +48,8 @@ const initialState = {
       title: "유기곰 주인 찾아요",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
       id: 4,
     },
@@ -53,7 +57,8 @@ const initialState = {
       title: "유기곰 주인 찾아요5",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
       id: 5,
     },
@@ -61,7 +66,8 @@ const initialState = {
       title: "유기곰 주인 찾아요6",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.무척 순한 곰돌이가 주인을 찾고있습니다.",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "gom",
       id: 6,
     },
@@ -69,7 +75,8 @@ const initialState = {
       title: "유기곰 주인 찾아요7",
       contents:
         "무척 순한 곰돌이가 주인을 찾고있습니다. 연락바랍니다. 사료값 감당이 안돼요..",
-      img: "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      imgurl:
+        "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       userId: "tang",
       id: 7,
     },

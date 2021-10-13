@@ -49,7 +49,7 @@ const Main = (props) => {
 
   const postList = useSelector((state) => state.posts.list);
   const loading = useSelector((state) => state.posts.isLoading);
-  console.log(postList)
+  console.log(postList);
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);
@@ -70,7 +70,7 @@ const Main = (props) => {
                 key={i}
                 title={v.title}
                 contents={v.contents}
-                img={v.img}
+                img={v.imgurl}
                 userId={v.userId}
                 id={v.id}
                 loading={loading}
