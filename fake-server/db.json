@@ -123,5 +123,33 @@
   ],
   "profile": {
     "name": "typicode"
+<<<<<<< HEAD
+  },
+  "user": [
+    {
+      "id": 1,
+      "user_id": "user1",
+      "password": "test1"
+    },
+    {
+      "id": 2,
+      "user_id": "user2",
+      "password": "test2"
+    },
+    {
+      "id": "5DUCJLG"
+    },
+    {
+      "id": "testing3",
+      "password": "testing3"
+    },
+    {
+      "user_id": "testing4",
+      "password": "testing4",
+      "id": 3
+    }
+  ]
+=======
   }
+>>>>>>> fd98e15403778ea332bbfae7910daf390c4c5872
 }
