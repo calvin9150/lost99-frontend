@@ -1,7 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from 'axios';
-import { deleteCookie, setCookie, getCookie } from '../shared/Cookie';
+import { deleteCookie, setCookie, getCookie } from "../../shared/Cookie";
 
 import { api } from "../../lib/apis";
 
@@ -10,12 +10,14 @@ import { api } from "../../lib/apis";
 
 
 const SET_USER = "SET_USER";
-
-
+const GET_USER = "GET_USER";
+const LOG_OUT = "LOG_OUT";
 
 
 // ACTION CREATORS
 const setUser = createAction(SET_USER, (user)=>({user}));
+const logOut = createAction(LOG_OUT, (user) => ({ user }));
+const getUser = createAction(GET_USER, (user) => ({ user }));
 
 
 const initialState = {
@@ -75,7 +77,6 @@ const loginDB = (username, password) => {
 	};
 };
 
-// 로그인 유지 API
 
 
 const loginCheckDB = () => {
@@ -106,15 +107,34 @@ const loginCheckDB = () => {
 	};
 };
 
+const logoutDB = () => {
+    return function (dispatch, getState, { history }) {
+      dispatch(logOut());
+      history.replace("/");
+      //replace는 push와 달리 뒤로가기해도 원래 페이지가 나오지 않음.
+    };
+  };
+
+
 
 // Reducer
 
 export default handleActions({
+
     [SET_USER]:(state, action) => produce(state, (draft) => {
         // setCookie("is_login", "success")
         draft.user = action.payload.user;
         draft.is_login = true;
     }),
+
+    [LOG_OUT]: (state, action) =>
+      produce(state, (draft) => {
+        deleteCookie("is_login");
+        draft.user = null;
+        draft.is_login = false;
+      }),
+
+    [GET_USER]: (state, action) => produce(state, (draft) => {}),
  
 
 },
@@ -126,6 +146,7 @@ const actionCreators = {
     signupDB,
     loginDB,
     loginCheckDB,
+    logoutDB,
 };
 
 export { actionCreators };

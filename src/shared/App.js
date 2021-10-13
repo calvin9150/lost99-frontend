@@ -5,10 +5,10 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
 import {useDispatch} from "react-redux";
-import {actionCreators as userActions} from "../redux/modules/user";
+import {actionCreators} from "../redux/modules/user";
 import { getCookie } from './Cookie';
 
-import { actionCreators} from "../redux/modules/user";
+import { actionCreators as loginAction } from "../redux/modules/user";
 import "./App.css";
 import Main from "../pages/Main";
 import Mypage from "../pages/Mypage";
@@ -30,7 +30,7 @@ function App() {
     // 토큰이 존재하면 로그인 유지 API 호출 
   React.useEffect(()=>{
   if(token){ 
-    dispatch(actionCreators.loginCheckDB());
+    dispatch(loginAction.loginCheckDB());
     }
   }, [])
 
