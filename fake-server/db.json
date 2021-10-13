@@ -120,12 +120,6 @@
       "user_id": "testing4",
       "password": "testing4",
       "id": 3
-    },
-    {
-      "username": "test1234",
-      "email": "test@test.com",
-      "password": "test1234",
-      "id": 4
     }
   ]
 }
