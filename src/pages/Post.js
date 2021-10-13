@@ -7,15 +7,17 @@ import { actionCreators as postActions } from "../redux/modules/post";
 
 //elements
 import Upload from "../elements/Upload";
+import Checkboxs from "../elements/Checkbox";
+import Select from "../elements/Select"
 
 const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
   const imgurl = useSelector((state) => state.image.image_url);
-  
+
   const [title, setTitle] = React.useState("");
   const [phonenumber, setPhonenumber] = React.useState("");
-  const [location, setLocation] = React.useState("");
+  // const [location, setLocation] = React.useState("");
   const [contents, setContents] = React.useState("");
   const changeTitle = (e) => {
     setTitle(e.target.value);
@@ -25,10 +27,10 @@ const Post = (props) => {
     setPhonenumber(e.target.value);
     // console.log(e.target.value); 연락처 인풋값
   };
-  const changeLocation = (e) => {
-    setLocation(e.target.value);
-    // console.log(e.target.value); 장소 인풋값
-  };
+  // const changeLocation = (e) => {
+  //   setLocation(e.target.value);
+  //   // console.log(e.target.value); 장소 인풋값
+  // };
   const changeContents = (e) => {
     setContents(e.target.value);
     // console.log(e.target.value); 내용 인풋값
@@ -40,12 +42,32 @@ const Post = (props) => {
         title,
         phonenumber,
         contents,
-        location,
-        imgurl,
+        // location,
+        imgurl
       )
     );
   };
 
+  // const location = [
+  //   "부산",
+  //   "대구",
+  //   "대전",
+  //   "강원",
+  //   "광주",
+  //   "경기",
+  //   "인천",
+  //   "제주",
+  //   "충북",
+  //   "경북",
+  //   "전북",
+  //   "세종",
+  //   "서울",
+  //   "충남",
+  //   "경북",
+  //   "전남",
+  //   "울산",
+  // ];
+  console.log(location)
   return (
     <Container>
       <CardsWrappper>
@@ -74,11 +96,17 @@ const Post = (props) => {
         <div>
           <input value={title} onChange={changeTitle} />
           <input value={phonenumber} onChange={changePhonenumber} />
-          <input value={location} onChange={changeLocation} />
+          {/* <input value={location} onChange={changeLocation} /> */}
           <input value={contents} onChange={changeContents} />
         </div>
         <button onClick={addPost}>추가</button>
-        (서버 쪽에 저장후)//// 리덕스에 넣어주기
+          {/* {location.map((l,i) => {
+            return (
+              
+            )
+          })} */}
+          <Select onChange={}/>
+          
       </CardsWrappper>
     </Container>
   );
