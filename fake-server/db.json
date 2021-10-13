@@ -20,7 +20,8 @@
       "phonenumber": "typicode",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "서울",
-      "contents": "서울입니다"
+      "contents": "서울입니다",
+      "username": "tang"
     },
     {
       "title": "asdas",
@@ -28,31 +29,35 @@
       "contents": "서울입니다2",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "서울",
-      "id": 2
+      "id": 2,
+      "username": "tang"
     },
     {
-      "title": "asda",
+      "title": "부산 분실물",
       "phonenumber": "asdasd",
-      "contents": "asdasdasd",
+      "contents": "부산에서 잃어버렸어요",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "부산",
-      "id": 3
+      "id": 3,
+      "username": "tang"
     },
     {
       "title": "asd",
       "phonenumber": "dasda",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      "contents": "dasdasdasd",
+      "contents": "경기",
       "location": "경기",
-      "id": 4
+      "id": 4,
+      "username": "tang"
     },
     {
-      "title": "awd",
+      "title": "충북",
       "phonenumber": "wsx",
       "contents": "cscasc",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "충북",
-      "id": 5
+      "id": 5,
+      "username": "tang"
     },
     {
       "title": "1231",
@@ -60,7 +65,8 @@
       "contents": "3123123",
       "location": "12312",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      "id": 6
+      "id": 6,
+      "username": "tang"
     },
     {
       "title": "asdaddddd",
@@ -71,28 +77,48 @@
       "id": 7
     },
     {
-      "title": "1232",
-      "phonenumber": "4",
-      "contents": "6666",
-      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      "location": "415",
-      "id": 8
-    },
-    {
-      "title": "123",
-      "phonenumber": "123",
-      "contents": "123",
-      "location": "123",
-      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      "id": 9
-    },
-    {
       "title": "aaaa",
       "phonenumber": "aaaa",
       "contents": "aaaa",
       "location": "aaaa",
       "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
       "id": 10
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 11,
+      "username": "gom"
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 12,
+      "username": "gom"
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 13,
+      "username": "gom"
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 14,
+      "username": "gom"
     }
   ],
   "profile": {
