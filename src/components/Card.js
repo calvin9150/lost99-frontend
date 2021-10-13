@@ -38,7 +38,7 @@ const Buttons = styled.div`
 `;
 
 const Wrapper = styled.div`
-  display: ${(props) => (props.loading === "true" ? "none" : "unset")};
+  display: ${({ load }) => (load ? "none" : "unset")};
   margin: 35px 20px 20px;
   user-select: none;
 `;
@@ -65,7 +65,7 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
   );
 
   const onClickDelete = useCallback(() => {
-    if (window.confirm(`[ ${title} ]을 삭제하실건가요?`)) {
+    if (!window.confirm(`[ ${title} ]을 삭제하실건가요?`)) {
       dispatch(postsActions.deletePostMiddleware(id));
       setIsMine(false);
       return;
@@ -73,7 +73,7 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
   }, [id, dispatch, title]);
 
   return (
-    <Wrapper loading={"false"}>
+    <Wrapper load={false}>
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
