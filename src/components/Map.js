@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { VectorMap } from "react-jvectormap";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -22,7 +22,7 @@ const RegionName = [
   ["KR-50", "세종"],
   ["KR-11", "서울"],
   ["KR-44", "충남"],
-  ["KR-48", "경북"],
+  ["KR-48", "경남"],
   ["KR-46", "전남"],
   ["KR-31", "울산"],
 ];
@@ -39,6 +39,11 @@ const Container = styled.div`
     height: 350px;
   }
 
+  .jvectormap-zoomin,
+  .jvectormap-zoomout {
+    display: none;
+  }
+
   @media screen and (max-width: 800px) {
     height: 300px;
     flex-direction: column-reverse;
@@ -51,6 +56,7 @@ const MapLayout = styled.div`
   flex-direction: column;
   align-items: center;
   width: 50%;
+  cursor: pointer;
 
   @media screen and (max-width: 800px) {
     margin-top: 1em;
@@ -108,7 +114,7 @@ const Map = () => {
           <VectorMap
             map={"kr_mill"}
             backgroundColor="transparent" //change it to ocean blue: #0077be
-            zoomOnScroll={false}
+            zoomOnScroll={true}
             containerStyle={{
               width: "100%",
               height: "100%",

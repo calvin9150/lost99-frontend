@@ -44,6 +44,18 @@ const CardsWrappper = styled.div`
   }
 `;
 
+const NoList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 320px;
+  margin-top: 0.8em;
+  background-color: rgba(150, 150, 150, 0.123);
+  font-size: 3em;
+  border-radius: 0.5em;
+`;
+
 const Main = (props) => {
   const dispatch = useDispatch();
 
@@ -79,11 +91,13 @@ const Main = (props) => {
                 img={v.imgurl}
                 userId={v.username}
                 id={v.id}
-                loading={loading}
               />
             );
           })}
         </CardsWrappper>
+        {selectedList.length === 0 && (
+          <NoList>이 지역에는 접수된 분실물이 없어요..</NoList>
+        )}
       </Container>
     </>
   );

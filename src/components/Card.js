@@ -38,8 +38,8 @@ const Buttons = styled.div`
 `;
 
 const Wrapper = styled.div`
-  display: ${(props) => (props.loading ? "none" : "unset")};
-  margin: 20px;
+  display: ${(props) => (props.loading === "true" ? "none" : "unset")};
+  margin: 35px 20px 20px;
   user-select: none;
 `;
 
@@ -73,7 +73,7 @@ const CardLayout = ({ title, contents, img, userId, id }) => {
   }, [id, dispatch, title]);
 
   return (
-    <Wrapper loading={false}>
+    <Wrapper loading={"false"}>
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}

@@ -8,6 +8,7 @@ const RegionTextLayout = styled.div`
   font-size: 4em;
   padding-top: 1em;
   color: gray;
+  user-select: none;
 
   @media screen and (max-width: 800px) {
     text-align: center;
