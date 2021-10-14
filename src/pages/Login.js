@@ -28,8 +28,12 @@ const Login = (props) => {
 
   const login = () => {
         setCookie("username", username, 3);
-        setCookie("password", password, 3);
-        history.push('/');
+        setCookie("is_login", true, 3)
+        window.location.href = "/";
+
+
+        // history.push('/');
+
     // console.log(username);       
     // if(username === "" || password === ""){
     //     window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요");

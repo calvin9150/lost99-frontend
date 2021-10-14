@@ -164,6 +164,13 @@
       "email": "test12345@gmail.com",
       "password": "test12345@gmail.com",
       "id": 6
+    },
+    {
+      "username": "test123",
+      "email": "test123@test.com",
+      "password": "test1234",
+      "passwordCheck": "test1234",
+      "id": 7
     }
   ],
   "login": [
@@ -176,6 +183,48 @@
       "username": "test1234",
       "password": "test1234",
       "id": 2
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 3
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 4
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 5
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 6
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 7
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 8
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 9
     }
   ]
 }
