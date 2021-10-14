@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-
 import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -59,15 +58,14 @@ const NoList = styled.div`
 const Main = (props) => {
   const dispatch = useDispatch();
 
-  const postList = useSelector((state) => state.posts.list);
-  const loading = useSelector((state) => state.posts.isLoading);
-  const mapSelected = useSelector((state) => state.posts.mapSelected);
+  const {
+    list: postList,
+    loading,
+    mapSelected,
+  } = useSelector((state) => state.posts);
 
   const selectedList = postList.filter((v) => {
-    if (mapSelected === v.location || mapSelected === "전국") {
-      return true;
-    }
-    return false;
+    return mapSelected === v.location || mapSelected === "전국";
   });
 
   useEffect(() => {
@@ -75,31 +73,28 @@ const Main = (props) => {
   }, [dispatch]);
 
   return (
-    <>
-      <Container>
-        <Modal visible={loading}>
-          <CircularProgress />
-        </Modal>
-        <Map />
-        <CardsWrappper>
-          {selectedList.map((v, i) => {
-            return (
-              <Card
-                key={i}
-                title={v.title}
-                contents={v.contents}
-                img={v.imgurl}
-                userId={v.username}
-                id={v.id}
-              />
-            );
-          })}
-        </CardsWrappper>
-        {selectedList.length === 0 && (
-          <NoList>이 지역에는 접수된 분실물이 없어요..</NoList>
-        )}
-      </Container>
-    </>
+    <Container>
+      <Modal visible={loading}>
+        <CircularProgress />
+      </Modal>
+      <Map />
+      <CardsWrappper>
+        {selectedList.map((v, i) => (
+          <Card
+            key={i}
+            title={v.title}
+            contents={v.contents}
+            img={v.imgurl}
+            userId={v.username}
+            id={v.id}
+            location={v.location}
+          />
+        ))}
+      </CardsWrappper>
+      {selectedList.length === 0 && (
+        <NoList>이 지역에는 접수된 분실물이 없어요..</NoList>
+      )}
+    </Container>
   );
 };
 
