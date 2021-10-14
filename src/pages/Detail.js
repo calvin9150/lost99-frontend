@@ -9,16 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 const Detail = (props) => {
   const dispatch = useDispatch();
   const id = props.match.params.id;
-
+  
   // const user_info = useSelector((state) => state.user.user)
 
   const post_list = useSelector((state) => state.posts.list); //리덕스의 post리스트들
 
   const post_idx = post_list.findIndex((p) => p.id == id); //리스트 중에서 주소창Id 와 같은 post순번
-  // console.log(post_list)
-  // console.log(id)
+
   const post = post_list[post_idx]; //상세페이지에서 보여줄 post
-  // console.log(post_list);
 
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
@@ -28,32 +26,25 @@ const Detail = (props) => {
     <Container style={{ padding: "16px" }}>
       <Grid style={{ padding: "0px" }}>
         <PreviewGrid>
-          <img
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-            src={post&&post.imgurl}
-            alt=""
-          />
+          <Image src={post && post.imgurl} />
         </PreviewGrid>
       </Grid>
 
       <Grid style={{ padding: "8px" }}>
         <Grid style={{ padding: "8px 0px" }}>
-          <Title>{post&&post.title}</Title>
+          <Title>{post && post.title}</Title>
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
           <Label>location</Label>
-          <Text>{post&&post.location}</Text>
+          <Text>{post && post.location}</Text>
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
           <Label>Contact number</Label>
-          <Text>{post&&post.phonenumber}</Text>
+          <Text>{post && post.phonenumber}</Text>
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
           <Label>Contents</Label>
-          <Text>{post&&post.contents}</Text>
+          <Text>{post && post.contents}</Text>
         </Grid>
       </Grid>
     </Container>
@@ -97,7 +88,7 @@ const PreviewGrid = styled.div`
   height: auto;
   margin: 10px auto;
   box-sizing: border-box;
-  border: 1px solid black;
+  // border: 1px solid black;
   overflow: hidden;
   @media screen and (max-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
@@ -108,11 +99,11 @@ const PreviewGrid = styled.div`
   }
 `;
 
-// const Image = styled.img`
-//   width: 35vw;
-//   height: auto;
-//   object-fit: cover;
-// `;
+const Image = styled.img`
+  width: 35vw;
+  height: auto;
+  object-fit: cover;
+`;
 
 const Title = styled.h1`
   font-size: 60px;

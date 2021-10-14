@@ -20,8 +20,7 @@
       "phonenumber": "typicode",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "서울",
-      "contents": "서울입니다",
-      "username": "tang"
+      "contents": "서울입니다"
     },
     {
       "title": "asdas",
@@ -29,35 +28,31 @@
       "contents": "서울입니다2",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "서울",
-      "id": 2,
-      "username": "tang"
+      "id": 2
     },
     {
-      "title": "부산 분실물",
+      "title": "asda",
       "phonenumber": "asdasd",
-      "contents": "부산에서 잃어버렸어요",
+      "contents": "asdasdasd",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "부산",
-      "id": 3,
-      "username": "tang"
+      "id": 3
     },
     {
       "title": "asd",
       "phonenumber": "dasda",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      "contents": "경기",
+      "contents": "dasdasdasd",
       "location": "경기",
-      "id": 4,
-      "username": "tang"
+      "id": 4
     },
     {
-      "title": "충북",
+      "title": "awd",
       "phonenumber": "wsx",
       "contents": "cscasc",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
       "location": "충북",
-      "id": 5,
-      "username": "tang"
+      "id": 5
     },
     {
       "title": "1231",
@@ -65,8 +60,7 @@
       "contents": "3123123",
       "location": "12312",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
-      "id": 6,
-      "username": "tang"
+      "id": 6
     },
     {
       "title": "asdaddddd",
@@ -77,6 +71,22 @@
       "id": 7
     },
     {
+      "title": "1232",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "415",
+      "id": 8
+    },
+    {
+      "title": "123",
+      "phonenumber": "123",
+      "contents": "123",
+      "location": "123",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "id": 9
+    },
+    {
       "title": "aaaa",
       "phonenumber": "aaaa",
       "contents": "aaaa",
@@ -85,44 +95,41 @@
       "id": 10
     },
     {
-      "title": "삭제 테스트용",
-      "phonenumber": "4",
-      "contents": "6666",
-      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
-      "location": "전남",
-      "id": 11,
-      "username": "gom"
+      "title": "1231231",
+      "phonenumber": "444",
+      "contents": "555555",
+      "location": "세종",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/%EA%B0%9C.jpg",
+      "id": 11
     },
     {
-      "title": "삭제 테스트용",
-      "phonenumber": "4",
-      "contents": "6666",
-      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
-      "location": "전남",
-      "id": 12,
-      "username": "gom"
+      "title": "12312",
+      "phonenumber": "312312",
+      "contents": "3123123",
+      "location": "충북",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_pink.png",
+      "id": 12
     },
     {
-      "title": "삭제 테스트용",
-      "phonenumber": "4",
-      "contents": "6666",
-      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
-      "location": "전남",
-      "id": 13,
-      "username": "gom"
+      "title": "d",
+      "phonenumber": "d",
+      "contents": "33",
+      "location": "대구",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/1123.jfif",
+      "id": 13
     },
     {
-      "title": "삭제 테스트용",
-      "phonenumber": "4",
-      "contents": "6666",
-      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
-      "location": "전남",
-      "id": 14,
-      "username": "gom"
+      "title": "23",
+      "phonenumber": "23",
+      "contents": "23",
+      "location": "광주",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/KakaoTalk_20211003_014352049.jpg",
+      "id": 14
     }
   ],
   "profile": {
     "name": "typicode"
+<<<<<<< HEAD
   },
   "user": [
     {
@@ -227,4 +234,7 @@
       "id": 9
     }
   ]
+=======
+  }
+>>>>>>> 878867a77cadf303e26c04867f9b7ece16919412
 }

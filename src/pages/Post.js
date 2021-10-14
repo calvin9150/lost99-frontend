@@ -33,6 +33,7 @@ const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
   const imgurl = useSelector((state) => state.image.image_url);
+  const classes = useStyles();
 
   const [title, setTitle] = React.useState("");
   const [phonenumber, setPhonenumber] = React.useState("");
@@ -67,7 +68,6 @@ const Post = (props) => {
       )
     );
   };
-  const classes = useStyles();
 
   const locationName = [
     "부산",
@@ -147,6 +147,8 @@ const Post = (props) => {
             size="small"
             value={contents}
             onChange={changeContents}
+            multiline
+            minRows="5"
           />
         </Grid>
 
@@ -201,7 +203,7 @@ const PreviewGrid = styled.div`
   height: auto;
   margin: 10px auto;
   box-sizing: border-box;
-  border: 1px solid black;
+  // border: 1px solid black;
   overflow: hidden;
   @media screen and (max-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
