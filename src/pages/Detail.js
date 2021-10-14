@@ -26,7 +26,7 @@ const Detail = (props) => {
     <Container style={{ padding: "16px" }}>
       <Grid style={{ padding: "0px" }}>
         <PreviewGrid>
-          <Image src={post && post.imgurl} />
+          <Image src={post && post.imageUrl} />
         </PreviewGrid>
       </Grid>
 

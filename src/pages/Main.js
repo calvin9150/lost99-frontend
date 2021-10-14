@@ -84,7 +84,7 @@ const Main = (props) => {
             key={i}
             title={v.title}
             contents={v.contents}
-            img={v.imgurl}
+            img={v.imageUrl}
             userId={v.username}
             id={v.id}
             location={v.location}

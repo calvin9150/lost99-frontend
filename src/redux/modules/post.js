@@ -23,11 +23,12 @@ const addPostsMiddleware = (post) => {
       phonenumber: post.phonenumber,
       contents: post.contents,
       location: post.location,
-      imgurl: post.imgurl,
-    });
+      imageUrl: post.imgurl,
+      username: "gom",
+    })
     dispatch(addPost(post));
     history.push("/");
-  };
+  }
 };
 
 // const getOnePostsMiddleware = (id) => {
