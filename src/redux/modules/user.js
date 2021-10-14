@@ -1,5 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import axios from 'axios';
+import { deleteCookie, setCookie, getCookie } from "../../shared/Cookie";
 
 import { api } from "../../lib/apis";
 
@@ -8,13 +10,14 @@ import { api } from "../../lib/apis";
 
 
 const SET_USER = "SET_USER";
-const LOG_IN = 'LOG_IN';
-
+const LOG_OUT = "LOG_OUT";
 
 
 // ACTION CREATORS
 const setUser = createAction(SET_USER, (user)=>({user}));
-const Login = createAction(LOG_IN, (user) => ({user}));
+const logOut = createAction(LOG_OUT, (user) => ({ user }));
+
+
 
 const initialState = {
     user: null,
@@ -24,22 +27,25 @@ const initialState = {
 
 // Middleware
 
-const signupDB = (username, email, password) => {
+const signupDB = (username, email, password, passwordCheck) => {
 	return function (dispatch, getState, { history }) {
 		api
 			.post("/user", {
                 username: username,
                 email: email,
                 password: password,
+                passwordCheck: passwordCheck
                 
               })
 			.then((res) => {
                 console.log(res);
 				dispatch(setUser({username, email, password }));
-                history.push("/");
+                window.alert("회원가입을 완료하였습니다");
+                history.push("/login");
 			})
 			.catch((err) => {
-                console.log("회원가입을 완료하지 못하였습니다");
+                window.alert("회원가입을 완료하지 못하였습니다")
+                console.log(err);
 				return err;
 			})
 	}
@@ -47,14 +53,25 @@ const signupDB = (username, email, password) => {
 
 
 const loginDB = (username, password) => {
+
+    
 	return function (dispatch, getState, { history }) {
 		api
 			.post('/login', { username: username, password: password })
+            
 			.then((res) => {
-				// setCookie('token', res.data[1].token, 7);
-				// localStorage.setItem('username', res.data[0].username);
-				dispatch(Login({ username: username }));
-				history.replace('/');
+            console.log(res);
+            dispatch(setUser({ 
+                username:res.data.username }));
+         
+
+            //쿠키에 토큰 저장 
+            const { accessToken } = res.data.token;
+            setCookie("is_login", `${accessToken}`);
+            setCookie("username");
+
+            history.replace('/');    
+
 			})
 			.catch((err) => {
                 console.log(err);
@@ -65,21 +82,62 @@ const loginDB = (username, password) => {
 
 
 
+const loginCheckDB = () => {
+
+    
+	return function (dispatch, getState, { history }) {
+
+        const token = getCookie("is_login");
+        console.log(token);
+
+		api
+			.post('/login', { 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+             })
+            
+			.then((res) => {
+                console.log(res.data);
+                dispatch(setUser({ 
+                    username: res.data.username
+                    })
+                    );
+                })
+			.catch((err) => {
+                console.log(err);
+			});
+	};
+};
+
+const logoutDB = () => {
+    return function (dispatch, getState, { history }) {
+      dispatch(logOut());
+      deleteCookie("is_login");
+      history.replace("/");
+    };
+  };
+
+
 // Reducer
 
 export default handleActions({
+
     [SET_USER]:(state, action) => produce(state, (draft) => {
         // setCookie("is_login", "success")
         draft.user = action.payload.user;
         draft.is_login = true;
     }),
- 
-    [LOG_IN]: (state, action) =>
-			produce(state, (draft) => {
-				draft.user = action.payload.user;
-				draft.is_login = true;
-			}),
 
+    [LOG_OUT]: (state, action) =>
+      produce(state, (draft) => {
+        // deleteCookie("is_login");
+        draft.user = null;
+        draft.is_login = false;
+      }),
+
+  
+ 
 
 },
     initialState
@@ -89,6 +147,8 @@ export default handleActions({
 const actionCreators = {
     signupDB,
     loginDB,
+    loginCheckDB,
+    logoutDB,
 };
 
 export { actionCreators };

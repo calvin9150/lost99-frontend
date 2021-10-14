@@ -4,7 +4,15 @@ import { Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
+<<<<<<< HEAD
 
+=======
+import {useDispatch} from "react-redux";
+import {actionCreators} from "../redux/modules/user";
+import { getCookie } from './Cookie';
+
+import { actionCreators as loginAction } from "../redux/modules/user";
+>>>>>>> 6461c0035bc4fdc50e282a0f3e23e8c9f609dc86
 import "./App.css";
 import Main from "../pages/Main";
 import Mypage from "../pages/Mypage";
@@ -17,10 +25,23 @@ import Detail from "../pages/Detail";
 import Header from "../components/Header";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+
+  const token = getCookie("is_login")
+
+    // 토큰이 존재하면 로그인 유지 API 호출 
+  React.useEffect(()=>{
+  if(token){ 
+    dispatch(loginAction.loginCheckDB());
+    }
+  }, [])
+
   return (
     <React.Fragment>
-        <Header></Header>
       <ConnectedRouter history={history}>
+      <Header></Header>
         <Route path="/" exact component={Main} />
         <Route path="/mypage" exact component={Mypage} />
         <Route path="/post" exact component={Post} />

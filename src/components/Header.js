@@ -1,20 +1,64 @@
 import React from "react";
-import styled from "styled-components";
 import { Button, ButtonGroup, Grid, Toolbar, Typography, AppBar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+
+
+
+import { history } from "../redux/configureStore";
+import { actionCreators as userActions } from "../redux/modules/user";
+import { useDispatch } from 'react-redux';
+
+import {getCookie} from "../shared/Cookie"
 
 
 const Header = (props) =>{
 
-    // const style = makeStyles({
+  const dispatch = useDispatch();
+	// const is_token = document.cookie;
 
-    //     buttonGroupStyle: {
-    //         backgroundColor: "blue",
-    //     }
-    //   });
+  const [is_login, setIsLogin] = React.useState(false);
 
-    // const classes  = style();
-      
+  React.useEffect(() => {
+
+      // 쿠키를 가져와요!
+      let cookie = getCookie("username");
+      // 확인해봅시다!
+      console.log(cookie);
+      // 쿠키가 있으면?
+      if(cookie){
+          setIsLogin(true);
+      }else{
+          setIsLogin(false);
+      }
+  });
+
+	if (is_login) {
+		return (
+      <Toolbar padding = "16px">
+
+      <Typography style={{ flex: 1 }} noWrap sx={{ flexGrow: 1 }} variant="h6" color="inherit">
+        Lost and Found 99
+      </Typography>
+
+      <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
+          <Button
+            onClick={() => {
+              history.push('/post');
+            }}
+          >글쓰기</Button>
+      </ButtonGroup>
+
+      <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
+          <Button
+          onClick={() => {
+            dispatch(userActions.logoutDB());
+          }}
+          >로그아웃</Button>
+      </ButtonGroup>
+
+    </Toolbar>
+
+		);
+	}
     return(
 
         <Toolbar padding = "16px">
@@ -23,15 +67,24 @@ const Header = (props) =>{
           Lost and Found 99
         </Typography>
 
-        <ButtonGroup  href="#" variant="outlined"   size="large" variant="contained" aria-label="outlined primary button group" >
-            <Button>로그인</Button>
-            <Button>회원가입</Button>
+        <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
+            <Button
+            onClick={() => {
+              history.push('/login');
+            }}
+            > 로그인 </Button>
+
+            <Button
+            onClick={() => {
+              history.push('/signup');
+            }}
+            
+            >회원가입</Button>
         </ButtonGroup>
 
       </Toolbar>
 
          
-  
 
     )
 }

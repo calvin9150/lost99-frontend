@@ -82,13 +82,7 @@ const Map = () => {
   const [selectAll, setSelectAll] = useState(true);
 
   const codeConverter = useCallback((code) => {
-    let name = null;
-    RegionName.forEach((v) => {
-      if (v[0] === code) {
-        name = v[1];
-      }
-    });
-    return name;
+    return RegionName.find((v) => v[0] === code)[1];
   }, []);
 
   const handleClick = useCallback(
@@ -103,49 +97,45 @@ const Map = () => {
     dispatch(postsActions.updateMapSelected("전국"));
   }, [dispatch, selectAll]);
 
-  return useMemo(
-    () => (
-      <Container>
-        <RegionText />
-        <MapLayout>
-          <Button variant="contained" onClick={onClickAllBtn}>
-            전국
-          </Button>
-          <VectorMap
-            map={"kr_mill"}
-            backgroundColor="transparent" //change it to ocean blue: #0077be
-            zoomOnScroll={true}
-            containerStyle={{
-              width: "100%",
-              height: "100%",
-            }}
-            onRegionClick={handleClick} //gets the country code
-            // containerClassName="map"
-            regionStyle={{
-              initial: {
-                fill: "#e4e4e4",
-                "fill-opacity": 0.9,
-                stroke: "none",
-                "stroke-width": 0,
-                "stroke-opacity": 0,
-              },
-              hover: {
-                "fill-opacity": 0.5,
-                cursor: "pointer",
-              },
-              selected: {
-                fill: "#2938bc", //color for the clicked country
-              },
-              selectedHover: {},
-            }}
-            regionsSelectable={true}
-            regionsSelectableOne={true}
-          />
-        </MapLayout>
-      </Container>
-    ),
-    [handleClick, onClickAllBtn]
+  return (
+    <Container>
+      <RegionText />
+      <MapLayout>
+        <Button variant="contained" onClick={onClickAllBtn}>
+          전국
+        </Button>
+        <VectorMap
+          map="kr_mill"
+          backgroundColor="transparent" //change it to ocean blue: #0077be
+          zoomOnScroll={false}
+          containerStyle={{
+            width: "100%",
+            height: "100%",
+          }}
+          onRegionClick={handleClick} //gets the country code
+          regionStyle={{
+            initial: {
+              fill: "#e4e4e4",
+              "fill-opacity": 0.9,
+              stroke: "none",
+              "stroke-width": 0,
+              "stroke-opacity": 0,
+            },
+            hover: {
+              "fill-opacity": 0.5,
+              cursor: "pointer",
+            },
+            selected: {
+              fill: "#2938bc", //color for the clicked country
+            },
+            selectedHover: {},
+          }}
+          regionsSelectable
+          regionsSelectableOne
+        />
+      </MapLayout>
+    </Container>
   );
 };
 
-export default Map;
+export default React.memo(Map);
