@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Edit = (props) => {
-  
   const id = props.match.params.id;
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -36,16 +35,16 @@ const Edit = (props) => {
   const preview = useSelector((state) => state.image.preview);
   const imgurl = useSelector((state) => state.image.image_url);
   const post = useSelector((state) => state.post.list);
-  console.log(post)
-  
+  console.log(post);
+
   const [title, setTitle] = React.useState(post.title);
   const [phonenumber, setPhonenumber] = React.useState(post.phonenumber);
   const [location, setLocation] = React.useState(post.location);
   const [contents, setContents] = React.useState(post.contents);
-  console.log(title)
-  
+  console.log(title);
+
   const changeTitle = (e) => {
-    setTitle(e.target.value);  
+    setTitle(e.target.value);
   };
   const changePhonenumber = (e) => {
     setPhonenumber(e.target.value);
@@ -90,15 +89,20 @@ const Edit = (props) => {
   const [list, setList] = React.useState([]);
   useEffect(() => {
     api.get(`/contents/${id}`).then((res) => {
-      const onePost = res.data
-      setList(...list, onePost)
-      dispatch(postActions.addPost(onePost))
-      
-    })
-    
-
+      const onePost = res.data;
+      setList(...list, onePost);
+      dispatch(postActions.addPost(onePost));
+    });
   }, []);
-  
+
+  useEffect(() => {
+    setTitle(post.title);
+    setPhonenumber(post.phonenumber);
+    setLocation(post.location);
+    setContents(post.contents);
+    dispatch(imageActions.setPreview(post.imgurl))
+  }, [post]);
+
   return (
     <Container style={{ padding: "16px" }}>
       <Grid style={{ padding: "0px" }}>
@@ -130,7 +134,7 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label="제목"
+            label=""
             variant="outlined"
             color="secondary"
             size="small"
@@ -141,7 +145,7 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label="연락처"
+            label=""
             variant="outlined"
             color="secondary"
             size="small"
@@ -152,7 +156,7 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label="내용"
+            label=""
             variant="outlined"
             color="secondary"
             size="small"

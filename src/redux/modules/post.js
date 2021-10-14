@@ -30,19 +30,19 @@ const addPostsMiddleware = (title, phonenumber, contents, location, imgurl) => {
   };
 };
 
-const getOnePostsMiddleware = (id) => {
-  return (dispatch, getState, { history }) => {
-    api
-      .get(`/contents/${id}`)
-      .then((res) => {
-        const onePost = res.data;
-        dispatch(addPost(onePost));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-};
+// const getOnePostsMiddleware = (id) => {
+//   return (dispatch, getState, { history }) => {
+//     api
+//       .get(`/contents/${id}`)
+//       .then((res) => {
+//         const onePost = res.data;
+//         dispatch(addPost(onePost));
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//       });
+//   };
+// };
 
 const updatePostMiddleware = (
   id,
@@ -96,7 +96,7 @@ export default handleActions(
 const actionCreators = {
   addPost,
   addPostsMiddleware,
-  getOnePostsMiddleware,
+  // getOnePostsMiddleware,
   updatePostMiddleware,
 };
 
