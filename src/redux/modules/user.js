@@ -10,14 +10,13 @@ import { api } from "../../lib/apis";
 
 
 const SET_USER = "SET_USER";
-const GET_USER = "GET_USER";
 const LOG_OUT = "LOG_OUT";
 
 
 // ACTION CREATORS
 const setUser = createAction(SET_USER, (user)=>({user}));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
-const getUser = createAction(GET_USER, (user) => ({ user }));
+
 
 
 const initialState = {
@@ -28,22 +27,25 @@ const initialState = {
 
 // Middleware
 
-const signupDB = (username, email, password) => {
+const signupDB = (username, email, password, passwordCheck) => {
 	return function (dispatch, getState, { history }) {
 		api
 			.post("/user", {
                 username: username,
                 email: email,
                 password: password,
+                passwordCheck: passwordCheck
                 
               })
 			.then((res) => {
                 console.log(res);
 				dispatch(setUser({username, email, password }));
-                history.push("/");
+                window.alert("회원가입을 완료하였습니다");
+                history.push("/login");
 			})
 			.catch((err) => {
-                console.log("회원가입을 완료하지 못하였습니다");
+                window.alert("회원가입을 완료하지 못하였습니다")
+                console.log(err);
 				return err;
 			})
 	}
@@ -66,6 +68,7 @@ const loginDB = (username, password) => {
             //쿠키에 토큰 저장 
             const { accessToken } = res.data.token;
             setCookie("is_login", `${accessToken}`);
+            setCookie("username");
 
             history.replace('/');    
 
@@ -110,11 +113,10 @@ const loginCheckDB = () => {
 const logoutDB = () => {
     return function (dispatch, getState, { history }) {
       dispatch(logOut());
+      deleteCookie("is_login");
       history.replace("/");
-      //replace는 push와 달리 뒤로가기해도 원래 페이지가 나오지 않음.
     };
   };
-
 
 
 // Reducer
@@ -129,12 +131,12 @@ export default handleActions({
 
     [LOG_OUT]: (state, action) =>
       produce(state, (draft) => {
-        deleteCookie("is_login");
+        // deleteCookie("is_login");
         draft.user = null;
         draft.is_login = false;
       }),
 
-    [GET_USER]: (state, action) => produce(state, (draft) => {}),
+  
  
 
 },

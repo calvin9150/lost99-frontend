@@ -36,8 +36,8 @@ function App() {
 
   return (
     <React.Fragment>
-        <Header></Header>
       <ConnectedRouter history={history}>
+      <Header></Header>
         <Route path="/" exact component={Main} />
         <Route path="/mypage" exact component={Mypage} />
         <Route path="/post" exact component={Post} />

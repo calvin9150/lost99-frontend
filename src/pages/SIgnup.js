@@ -27,7 +27,7 @@ const Signup = (props) => {
    const [username, setUserName] = React.useState('');
    const [email, setEmail] = React.useState('');
    const [password, setPwd] = React.useState('');
-   const [pwdcheck, setPwdCheck] = React.useState('');
+   const [passwordCheck, setPwdCheck] = React.useState('');
 
   //  회원가입하기 버튼 누르면 호출되는 로그인 함수 
 
@@ -43,12 +43,12 @@ const Signup = (props) => {
         return;
     }
 
-    if(password!==pwdcheck){
+    if(password!==passwordCheck){
         window.alert("패스워드와 패스워드 확인이 일치하지 않습니다");
         return;
     }
 
-    dispatch(userActions.signupDB(username, email, password));
+    dispatch(userActions.signupDB(username, email, password, passwordCheck));
 
 }
 
