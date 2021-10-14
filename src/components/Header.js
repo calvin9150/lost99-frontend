@@ -22,11 +22,12 @@ const Header = (props) =>{
         Lost and Found 99
       </Typography>
 
-      <ButtonGroup  href="#" variant="outlined"   size="large" variant="contained" aria-label="outlined primary button group" >
+      <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
           <Button
           onClick={() => {
             dispatch(userActions.logoutDB());
           }}
+
           
           >로그아웃</Button>
       </ButtonGroup>
@@ -43,7 +44,7 @@ const Header = (props) =>{
           Lost and Found 99
         </Typography>
 
-        <ButtonGroup  href="#" variant="outlined"   size="large" variant="contained" aria-label="outlined primary button group" >
+        <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
             <Button
             onClick={() => {
               history.push('/login');
