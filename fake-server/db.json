@@ -129,5 +129,112 @@
   ],
   "profile": {
     "name": "typicode"
+<<<<<<< HEAD
+  },
+  "user": [
+    {
+      "id": 1,
+      "user_id": "user1",
+      "password": "test1"
+    },
+    {
+      "id": 2,
+      "user_id": "user2",
+      "password": "test2"
+    },
+    {
+      "id": "5DUCJLG"
+    },
+    {
+      "id": "testing3",
+      "password": "testing3"
+    },
+    {
+      "user_id": "testing4",
+      "password": "testing4",
+      "id": 3
+    },
+    {
+      "username": "signupworking",
+      "email": "work@work.com",
+      "password": "work1234",
+      "id": 4
+    },
+    {
+      "username": "test1234567",
+      "email": "test123@test.com",
+      "password": "test1234",
+      "id": 5
+    },
+    {
+      "username": "test1234",
+      "email": "test12345@gmail.com",
+      "password": "test12345@gmail.com",
+      "id": 6
+    },
+    {
+      "username": "test123",
+      "email": "test123@test.com",
+      "password": "test1234",
+      "passwordCheck": "test1234",
+      "id": 7
+    }
+  ],
+  "login": [
+    {
+      "username": "test1234",
+      "password": "test1234",
+      "id": 1
+    },
+    {
+      "username": "test1234",
+      "password": "test1234",
+      "id": 2
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 3
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 4
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 5
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 6
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 7
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 8
+    },
+    {
+      "headers": {
+        "Authorization": "Bearer true"
+      },
+      "id": 9
+    }
+  ]
+=======
   }
+>>>>>>> 878867a77cadf303e26c04867f9b7ece16919412
 }

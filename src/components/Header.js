@@ -19,9 +19,9 @@ const Header = (props) =>{
 
   React.useEffect(() => {
 
-      // 쿠키를 가져와요!
-      let cookie = getCookie("username");
-      // 확인해봅시다!
+      // 쿠키를 가져오기
+      let cookie = getCookie("is_login");
+      // 쿠키 존재여부 확인 
       console.log(cookie);
       // 쿠키가 있으면?
       if(cookie){
@@ -35,9 +35,9 @@ const Header = (props) =>{
 		return (
       <Toolbar padding = "16px">
 
-      <Typography style={{ flex: 1 }} noWrap sx={{ flexGrow: 1 }} variant="h6" color="inherit">
+      {/* <Typography style={{ flex: 1 }} noWrap sx={{ flexGrow: 1 }} variant="h6" color="inherit">
         Lost and Found 99
-      </Typography>
+      </Typography> */}
 
       <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
           <Button
@@ -45,15 +45,14 @@ const Header = (props) =>{
               history.push('/post');
             }}
           >글쓰기</Button>
-      </ButtonGroup>
 
-      <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
           <Button
           onClick={() => {
             dispatch(userActions.logoutDB());
           }}
           >로그아웃</Button>
       </ButtonGroup>
+
 
     </Toolbar>
 
