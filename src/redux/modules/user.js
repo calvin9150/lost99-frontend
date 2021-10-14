@@ -64,11 +64,9 @@ const loginDB = (username, password) => {
             dispatch(setUser({ 
                 username:res.data.username }));
          
-
-            //쿠키에 토큰 저장 
+            // 쿠키에 토큰 저장 
             const { accessToken } = res.data.token;
             setCookie("is_login", `${accessToken}`);
-            setCookie("username");
 
             history.replace('/');    
 
@@ -84,7 +82,6 @@ const loginDB = (username, password) => {
 
 const loginCheckDB = () => {
 
-    
 	return function (dispatch, getState, { history }) {
 
         const token = getCookie("is_login");
@@ -110,11 +107,13 @@ const loginCheckDB = () => {
 	};
 };
 
+
+
 const logoutDB = () => {
     return function (dispatch, getState, { history }) {
       dispatch(logOut());
-      deleteCookie("is_login");
-      history.replace("/");
+      window.location.href = "/";
+    //   history.replace("/");
     };
   };
 
@@ -124,20 +123,16 @@ const logoutDB = () => {
 export default handleActions({
 
     [SET_USER]:(state, action) => produce(state, (draft) => {
-        // setCookie("is_login", "success")
         draft.user = action.payload.user;
         draft.is_login = true;
     }),
 
     [LOG_OUT]: (state, action) =>
       produce(state, (draft) => {
-        // deleteCookie("is_login");
+        deleteCookie("is_login");
         draft.user = null;
         draft.is_login = false;
       }),
-
-  
- 
 
 },
     initialState
