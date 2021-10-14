@@ -55,17 +55,10 @@ const Edit = (props) => {
   const changeContents = (e) => {
     setContents(e.target.value);
   };
-  const updatePost = (id, title, phonenumber, contents, location, imgurl) => {
-    dispatch(
-      postActions.updatePostMiddleware(
-        id,
-        title,
-        phonenumber,
-        contents,
-        location,
-        imgurl
-      )
-    );
+
+  const updatePost = () => {
+    const _post = { id, title, phonenumber, contents, location, imgurl };
+    dispatch(postActions.updatePostMiddleware(id, _post));
   };
   const locationName = [
     "부산",
@@ -100,7 +93,7 @@ const Edit = (props) => {
     setPhonenumber(post.phonenumber);
     setLocation(post.location);
     setContents(post.contents);
-    dispatch(imageActions.setPreview(post.imgurl))
+    dispatch(imageActions.setPreview(post.imgurl));
   }, [post]);
 
   return (
@@ -134,7 +127,8 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label=""
+            label="제목"
+            defaultValue
             variant="outlined"
             color="secondary"
             size="small"
@@ -145,7 +139,8 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label=""
+            label="연락처"
+            defaultValue
             variant="outlined"
             color="secondary"
             size="small"
@@ -156,7 +151,8 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label=""
+            label="내용"
+            defaultValue
             variant="outlined"
             color="secondary"
             size="small"

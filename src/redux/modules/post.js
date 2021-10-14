@@ -16,16 +16,16 @@ const initialState = {
 };
 
 //middlewarse
-const addPostsMiddleware = (title, phonenumber, contents, location, imgurl) => {
+const addPostsMiddleware = (post) => {
   return (dispatch, getState, { history }) => {
     api.post("/contents", {
-      title: title,
-      phonenumber: phonenumber,
-      contents: contents,
-      location: location,
-      imgurl: imgurl,
+      title: post.title,
+      phonenumber: post.phonenumber,
+      contents: post.contents,
+      location: post.location,
+      imgurl: post.imgurl,
     });
-    dispatch(addPost({ title, phonenumber, contents, location, imgurl }));
+    dispatch(addPost(post));
     history.push("/");
   };
 };
@@ -44,27 +44,21 @@ const addPostsMiddleware = (title, phonenumber, contents, location, imgurl) => {
 //   };
 // };
 
-const updatePostMiddleware = (
-  id,
-  title,
-  phonenumber,
-  contents,
-  location,
-  imgurl
-) => {
+const updatePostMiddleware = (id, _post) => {
   return (dispatch, getState, { history }) => {
     api
       .put(`/contents/${id}`, {
-        title: title,
-        phonenumber: phonenumber,
-        contents: contents,
-        location: location,
-        imgurl: imgurl,
+        id: id,
+        title: _post.title,
+        phonenumber: _post.phonenumber,
+        contents: _post.contents,
+        location: _post.location,
+        imgurl: _post.imgurl,
       })
       .then((res) => {
         console.log(res);
-        dispatch(updatePost(title, phonenumber, contents, location, imgurl));
-        history.replace("/")
+        dispatch(updatePost(_post.title, _post.phonenumber, _post.contents, _post.location, _post.imgurl));
+        history.replace("/");
       })
       .catch((err) => {
         console.log(err);
