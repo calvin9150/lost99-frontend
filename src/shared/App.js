@@ -4,15 +4,12 @@ import { Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
-<<<<<<< HEAD
 
-=======
 import {useDispatch} from "react-redux";
 import {actionCreators} from "../redux/modules/user";
 import { getCookie } from './Cookie';
 
 import { actionCreators as loginAction } from "../redux/modules/user";
->>>>>>> 6461c0035bc4fdc50e282a0f3e23e8c9f609dc86
 import "./App.css";
 import Main from "../pages/Main";
 import Mypage from "../pages/Mypage";
