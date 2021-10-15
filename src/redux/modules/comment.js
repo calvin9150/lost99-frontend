@@ -15,7 +15,6 @@ const addComment = createAction(ADD_COMMENT, (comment) => ({ comment }));
 //initial state
 const initialState = {
   comment: "dddd",
-  username: "ddd123",
 };
 
 //middlewarse

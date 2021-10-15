@@ -50,11 +50,7 @@ const Detail = (props) => {
           </Grid>
         </Grid>
       </Container>
-      <Container>
-        
-          <Comment />
-        
-      </Container>
+      <Container>{/* <Comment /> */}</Container>
     </>
   );
 };
@@ -71,7 +67,7 @@ const Container = styled.div`
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 720px) {
-    width: 90vw;
+    flex-direction: column;
   }
 `;
 
@@ -79,38 +75,33 @@ const Grid = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 35vw;
+  width: 100%;
   margin: 10px 0px;
   overflow: hidden;
-  @media screen and (max-width: 1280px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media screen and (max-width: 820px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  
 `;
 
 const PreviewGrid = styled.div`
-  width: 35vw;
+  width: 100%;
   height: auto;
   margin: 10px auto;
   box-sizing: border-box;
-  // border: 1px solid black;
-  overflow: hidden;
-  @media screen and (max-width: 1280px) {
-    grid-template-columns: repeat(2, 1fr);
+
+  @media screen and (max-width: 720px) {
+    display: flex;
+    justify-content: center;
   }
 
-  @media screen and (max-width: 820px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  
 `;
 
 const Image = styled.img`
   width: 35vw;
   height: auto;
   object-fit: cover;
+  @media screen and (max-width: 720px) {
+    width:100%
+  }
 `;
 
 const Title = styled.h1`

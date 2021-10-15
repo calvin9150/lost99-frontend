@@ -10,11 +10,11 @@ import { actionCreators as commentActions } from "../redux/modules/comment";
 const Comment = () => {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.user.user.username);
+  const _comment = useSelector((state) => state.comment.comment);
 
   const [comment, setComment] = React.useState();
   const changeComment = (e) => {
     setComment(e.target.value);
-    // console.log(e.target.value)
   };
 
   const addComment = () => {
@@ -65,10 +65,10 @@ const Comment = () => {
           }}
         >
           <Grid style={{ width: "20%" }}>
-            <Text>동건</Text>
+            <Text>{_comment.username}</Text>
           </Grid>
           <Grid style={{ width: "80%" }}>
-            <Text></Text>
+            <Text>{_comment.comment}</Text>
           </Grid>
         </Grid>
       </Grid>
