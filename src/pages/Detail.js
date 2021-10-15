@@ -51,9 +51,9 @@ const Detail = (props) => {
         </Grid>
       </Container>
       <Container>
-        <Grid>
+        
           <Comment />
-        </Grid>
+        
       </Container>
     </>
   );

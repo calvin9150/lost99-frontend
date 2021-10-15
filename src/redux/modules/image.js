@@ -13,10 +13,12 @@ AWS.config.update({
 //action type
 const SET_PREVIEW = "SET_PREVIEW";
 const UPLOAD_IMAGE = "UPLOAD_IMAGE";
+const DELETE_PREVIEW = "DELETE_PREVIEW";
 
 //action creators
 const setPreview = createAction(SET_PREVIEW, (preview) => ({ preview }));
 const uploadImage = createAction(UPLOAD_IMAGE, (imageUrl) => ({ imageUrl }));
+const deletePreview = createAction(DELETE_PREVIEW, (preview) => ({ preview }));
 
 //initial state
 const initialState = {
@@ -51,6 +53,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.preview = action.payload.preview;
       }),
+    [DELETE_PREVIEW]: (state, action) =>
+      produce(state, (draft) => {
+        draft.preview = action.payload.preview;
+      }),
     [UPLOAD_IMAGE]: (state, action) =>
       produce(state, (draft) => {
         draft.imageUrl = action.payload.imageUrl;
@@ -61,6 +67,7 @@ export default handleActions(
 
 const actionCreators = {
   setPreview,
+  deletePreview,
   uploadImageDB,
 };
 

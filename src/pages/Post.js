@@ -4,6 +4,7 @@ import styled from "styled-components";
 //redux & api
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
+import { actionCreators as imageActions } from "../redux/modules/image";
 
 //elements
 import Upload from "../elements/Upload";
@@ -33,6 +34,8 @@ const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
   const imageUrl = useSelector((state) => state.image.imageUrl);
+  const username = useSelector((state) => state.user.user.username);
+  
   const classes = useStyles();
 
   const [title, setTitle] = React.useState("");
@@ -66,8 +69,9 @@ const Post = (props) => {
     if (preview === null) {
       return window.alert("이미지 선택 후 업로드 버튼을 눌려주세요");
     }
-    const post = { title, phonenumber, contents, location, imageUrl };
+    const post = { title, phonenumber, contents, location, imageUrl, username };
     dispatch(postActions.addPostsMiddleware(post));
+    dispatch(imageActions.deletePreview(""));
   };
 
   const locationName = [
@@ -126,6 +130,7 @@ const Post = (props) => {
             size="small"
             value={title}
             onChange={changeTitle}
+            autoComplete="off"
           />
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
@@ -137,6 +142,7 @@ const Post = (props) => {
             size="small"
             value={phonenumber}
             onChange={changePhonenumber}
+            autoComplete="off"
           />
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
@@ -150,6 +156,7 @@ const Post = (props) => {
             onChange={changeContents}
             multiline
             minRows="5"
+            autoComplete="off"
           />
         </Grid>
 
