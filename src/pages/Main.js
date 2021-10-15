@@ -5,6 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Card from "../components/Card";
 import { actionCreators as postsActions } from "../redux/modules/posts";
+import { actionCreators as userActions } from "../redux/modules/user";
 import Modal from "../components/Modal";
 import Map from "../components/Map";
 
@@ -64,12 +65,14 @@ const Main = (props) => {
     mapSelected,
   } = useSelector((state) => state.posts);
 
-  console.log(postList, "postList");
+  const { is_login: isLoggedIn, user } = useSelector((state) => state.user);
+  console.log(isLoggedIn, user);
 
   const selectedList = postList.filter((v) => {
     return mapSelected === v.location || mapSelected === "전국";
   });
 
+  console.log(selectedList);
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);
@@ -91,6 +94,8 @@ const Main = (props) => {
             id={v.id}
             location={v.location}
             loading={loading}
+            isLoggedIn={isLoggedIn}
+            username={user}
           />
         ))}
       </CardsWrappper>

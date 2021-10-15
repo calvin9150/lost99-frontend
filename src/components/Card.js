@@ -44,8 +44,6 @@ const Wrapper = styled.div`
   user-select: none;
 `;
 
-const LoginId = "gom";
-
 const CardLayout = ({
   title,
   contents,
@@ -54,6 +52,8 @@ const CardLayout = ({
   id,
   location = "전국",
   loading = false,
+  isLoggedIn,
+  username,
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -66,10 +66,11 @@ const CardLayout = ({
   // };
 
   useEffect(() => {
-    if (userId === LoginId) {
+    console.log(userId, username?.username, isLoggedIn);
+    if (userId === username?.username && isLoggedIn) {
       setIsMine(true);
     }
-  }, [userId]);
+  }, [userId, username, isLoggedIn]);
 
   const onClickCard = useCallback(
     (e) => {
