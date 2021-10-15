@@ -26,7 +26,7 @@ const addPostsMiddleware = (post) => {
       contents: post.contents,
       location: post.location,
       imageUrl: post.imageUrl,
-      username: "gom",
+      username: post.username,
     });
     dispatch(addPost(post));
     history.push("/");
