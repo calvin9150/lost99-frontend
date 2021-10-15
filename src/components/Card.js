@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -10,14 +9,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
-import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import { history } from "../redux/configureStore";
 import { actionCreators as postsActions } from "../redux/modules/posts";
 import { CardHeader } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Collapse from "@material-ui/core/Collapse";
 
 const useStyles = makeStyles({
   root: {
@@ -58,16 +53,17 @@ const CardLayout = ({
   userId,
   id,
   location = "전국",
+  loading = false,
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [isMine, setIsMine] = useState(false);
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
 
   useEffect(() => {
     if (userId === LoginId) {
@@ -83,15 +79,21 @@ const CardLayout = ({
   );
 
   const onClickDelete = useCallback(() => {
-    if (!window.confirm(`[ ${title} ]을 삭제하실건가요?`)) {
+    if (window.confirm(`[ ${title} ]을 삭제하실건가요?`)) {
+      console.log(id, "id");
       dispatch(postsActions.deletePostMiddleware(id));
       setIsMine(false);
       return;
     }
+    console.log(id, "id");
   }, [id, dispatch, title]);
 
+  const onClickEdit = useCallback(() => {
+    history.push(`/edit/${id}`);
+  }, [id]);
+
   return (
-    <Wrapper load={false}>
+    <Wrapper load={loading}>
       <Card className={classes.root}>
         <CardHeader title={title} subheader={location} onClick={onClickCard} />
         <CardMedia
@@ -113,7 +115,11 @@ const CardLayout = ({
           <CardActions>
             {isMine && (
               <Buttons>
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={onClickEdit}
+                >
                   수정하기
                 </Button>
                 <Button

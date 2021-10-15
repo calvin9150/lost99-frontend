@@ -16,12 +16,12 @@ const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 
 //action creators
 const setPreview = createAction(SET_PREVIEW, (preview) => ({ preview }));
-const uploadImage = createAction(UPLOAD_IMAGE, (image_url) => ({ image_url }));
+const uploadImage = createAction(UPLOAD_IMAGE, (imageUrl) => ({ imageUrl }));
 
 //initial state
 const initialState = {
   preview: null,
-  image_url: "",
+  imageUrl: "",
 };
 
 //middlwarse
@@ -38,8 +38,8 @@ export const uploadImageDB = (image) => {
     const promise = upload.promise();
 
     promise.then((data) => {
-      const image_url = data.Location;
-      dispatch(uploadImage(image_url));
+      const imageUrl = data.Location;
+      dispatch(uploadImage(imageUrl));
     });
   };
 };
@@ -53,7 +53,7 @@ export default handleActions(
       }),
     [UPLOAD_IMAGE]: (state, action) =>
       produce(state, (draft) => {
-        draft.image_url = action.payload.image_url;
+        draft.imageUrl = action.payload.imageUrl;
       }),
   },
   initialState

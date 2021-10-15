@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
-  const imgurl = useSelector((state) => state.image.image_url);
+  const imageUrl = useSelector((state) => state.image.imageUrl);
   const classes = useStyles();
 
   const [title, setTitle] = React.useState("");
@@ -42,31 +42,32 @@ const Post = (props) => {
 
   const changeTitle = (e) => {
     setTitle(e.target.value);
-    console.log(e.target.value);
   };
   const changePhonenumber = (e) => {
     setPhonenumber(e.target.value);
-    console.log(e.target.value);
   };
   const changeLocation = (e) => {
     setLocation(e.target.value);
-    console.log(e.target.value);
   };
   const changeContents = (e) => {
     setContents(e.target.value);
-    console.log(e.target.value);
   };
 
   const addPost = () => {
-    dispatch(
-      postActions.addPostsMiddleware(
-        title,
-        phonenumber,
-        contents,
-        location,
-        imgurl
-      )
-    );
+    if (
+      title === "" ||
+      phonenumber === "" ||
+      location === "" ||
+      contents === ""
+    ) {
+      return window.alert("빈칸을 입력해주세요");
+    }
+
+    if (preview === null) {
+      return window.alert("이미지 선택 후 업로드 버튼을 눌려주세요");
+    }
+    const post = { title, phonenumber, contents, location, imageUrl };
+    dispatch(postActions.addPostsMiddleware(post));
   };
 
   const locationName = [

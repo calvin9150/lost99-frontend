@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
 }));
+
 const Upload = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -35,30 +36,28 @@ const Upload = (props) => {
   };
   const uploadDB = () => {
     let image = fileInput.current.files[0];
-    // console.log(image)
     dispatch(imageActions.uploadImageDB(image));
+    window.alert("완료!")
   };
 
   return (
     <React.Fragment>
       <input type="file" ref={fileInput} onChange={selectFile} />
-      
-        <Button
-          variant="contained"
-          size="small"
-          color="primary"
-          className={classes.margin}
-          onClick={uploadDB}
-          style={{
-            margin:"7px 0px 0px 0px"}}
-        >
-          사진 업로드
-        </Button>
-      
+
+      <Button
+        variant="contained"
+        size="small"
+        color="primary"
+        className={classes.margin}
+        onClick={uploadDB}
+        style={{
+          margin: "7px 0px 0px 0px",
+        }}
+      >
+        사진 업로드
+      </Button>
     </React.Fragment>
   );
 };
 
 export default Upload;
-
-

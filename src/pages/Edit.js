@@ -33,15 +33,15 @@ const Edit = (props) => {
   const classes = useStyles();
 
   const preview = useSelector((state) => state.image.preview);
-  const imgurl = useSelector((state) => state.image.image_url);
+  const imageUrl = useSelector((state) => state.image.imageUrl);
   const post = useSelector((state) => state.post.list);
-  console.log(post);
+  // console.log(post);
 
   const [title, setTitle] = React.useState(post.title);
   const [phonenumber, setPhonenumber] = React.useState(post.phonenumber);
   const [location, setLocation] = React.useState(post.location);
   const [contents, setContents] = React.useState(post.contents);
-  console.log(title);
+  // console.log(title);
 
   const changeTitle = (e) => {
     setTitle(e.target.value);
@@ -55,17 +55,10 @@ const Edit = (props) => {
   const changeContents = (e) => {
     setContents(e.target.value);
   };
-  const updatePost = (id, title, phonenumber, contents, location, imgurl) => {
-    dispatch(
-      postActions.updatePostMiddleware(
-        id,
-        title,
-        phonenumber,
-        contents,
-        location,
-        imgurl
-      )
-    );
+
+  const updatePost = () => {
+    const _post = { id, title, phonenumber, contents, location, imageUrl };
+    dispatch(postActions.updatePostMiddleware(id, _post));
   };
   const locationName = [
     "부산",
@@ -92,6 +85,7 @@ const Edit = (props) => {
       const onePost = res.data;
       setList(...list, onePost);
       dispatch(postActions.addPost(onePost));
+      console.log(onePost, "onePostㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
     });
   }, []);
 
@@ -100,7 +94,7 @@ const Edit = (props) => {
     setPhonenumber(post.phonenumber);
     setLocation(post.location);
     setContents(post.contents);
-    dispatch(imageActions.setPreview(post.imgurl))
+    dispatch(imageActions.setPreview(post.imageUrl));
   }, [post]);
 
   return (
@@ -134,7 +128,8 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label=""
+            label="제목"
+            defaultValue
             variant="outlined"
             color="secondary"
             size="small"
@@ -145,7 +140,8 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label=""
+            label="연락처"
+            defaultValue
             variant="outlined"
             color="secondary"
             size="small"
@@ -156,7 +152,8 @@ const Edit = (props) => {
         <Grid style={{ padding: "8px 0px" }}>
           <TextField
             id="outlined-secondary"
-            label=""
+            label="내용"
+            defaultValue
             variant="outlined"
             color="secondary"
             size="small"

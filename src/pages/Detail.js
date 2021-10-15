@@ -4,12 +4,13 @@ import { api } from "../lib/apis";
 import { actionCreators as postsActions } from "../redux/modules/posts";
 //react hook
 import { useSelector, useDispatch } from "react-redux";
-//elements
+//components
+import Comment from "../components/Comment";
 
 const Detail = (props) => {
   const dispatch = useDispatch();
   const id = props.match.params.id;
-  
+
   // const user_info = useSelector((state) => state.user.user)
 
   const post_list = useSelector((state) => state.posts.list); //리덕스의 post리스트들
@@ -23,31 +24,38 @@ const Detail = (props) => {
   }, [dispatch]);
 
   return (
-    <Container style={{ padding: "16px" }}>
-      <Grid style={{ padding: "0px" }}>
-        <PreviewGrid>
-          <Image src={post && post.imgurl} />
-        </PreviewGrid>
-      </Grid>
+    <>
+      <Container style={{ padding: "16px" }}>
+        <Grid style={{ padding: "0px" }}>
+          <PreviewGrid>
+            <Image src={post && post.imageUrl} />
+          </PreviewGrid>
+        </Grid>
 
-      <Grid style={{ padding: "8px" }}>
-        <Grid style={{ padding: "8px 0px" }}>
-          <Title>{post && post.title}</Title>
+        <Grid style={{ padding: "8px" }}>
+          <Grid style={{ padding: "8px 0px" }}>
+            <Title>{post && post.title}</Title>
+          </Grid>
+          <Grid style={{ padding: "8px 0px" }}>
+            <Label>location</Label>
+            <Text>{post && post.location}</Text>
+          </Grid>
+          <Grid style={{ padding: "8px 0px" }}>
+            <Label>Contact number</Label>
+            <Text>{post && post.phonenumber}</Text>
+          </Grid>
+          <Grid style={{ padding: "8px 0px" }}>
+            <Label>Contents</Label>
+            <Text>{post && post.contents}</Text>
+          </Grid>
         </Grid>
-        <Grid style={{ padding: "8px 0px" }}>
-          <Label>location</Label>
-          <Text>{post && post.location}</Text>
+      </Container>
+      <Container>
+        <Grid>
+          <Comment />
         </Grid>
-        <Grid style={{ padding: "8px 0px" }}>
-          <Label>Contact number</Label>
-          <Text>{post && post.phonenumber}</Text>
-        </Grid>
-        <Grid style={{ padding: "8px 0px" }}>
-          <Label>Contents</Label>
-          <Text>{post && post.contents}</Text>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </>
   );
 };
 
