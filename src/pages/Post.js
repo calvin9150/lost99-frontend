@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
 import { actionCreators as imageActions } from "../redux/modules/image";
+import { actionCreators as postsActions } from "../redux/modules/posts";
 
 //elements
 import Upload from "../elements/Upload";
@@ -35,8 +36,7 @@ const Post = (props) => {
   const preview = useSelector((state) => state.image.preview);
   const imageUrl = useSelector((state) => state.image.imageUrl);
   const username = useSelector((state) => state.user.user.username);
-  
-  
+
   const classes = useStyles();
 
   const [title, setTitle] = React.useState("");
@@ -73,6 +73,7 @@ const Post = (props) => {
     const post = { title, phonenumber, contents, location, imageUrl, username };
     dispatch(postActions.addPostsMiddleware(post));
     dispatch(imageActions.deletePreview(""));
+    dispatch(postsActions.addPost(post));
   };
 
   const locationName = [

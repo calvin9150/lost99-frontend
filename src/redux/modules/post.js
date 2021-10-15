@@ -18,19 +18,22 @@ const initialState = {
 //middlewarse
 const addPostsMiddleware = (post) => {
   return (dispatch, getState, { history }) => {
-    console.log("post");
-    console.log(post);
-    api.post("/contents", {
-      title: post.title,
-      phonenumber: post.phonenumber,
-      contents: post.contents,
-      location: post.location,
-      imageUrl: post.imageUrl,
-      username: post.username,
-    });
-    // console.log(getState())
-    dispatch(addPost(post));
-    history.push("/");
+    api
+      .post("/contents", {
+        title: post.title,
+        phonenumber: post.phonenumber,
+        contents: post.contents,
+        location: post.location,
+        imageUrl: post.imageUrl,
+        username: post.username,
+      })
+      .then((res) => {
+        // dispatch(addPost(post));
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
@@ -60,7 +63,6 @@ const updatePostMiddleware = (id, _post) => {
         imageUrl: _post.imageUrl,
       })
       .then((res) => {
-        console.log(res);
         dispatch(
           updatePost(
             _post.title,

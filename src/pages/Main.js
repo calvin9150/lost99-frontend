@@ -66,13 +66,11 @@ const Main = (props) => {
   } = useSelector((state) => state.posts);
 
   const { is_login: isLoggedIn, user } = useSelector((state) => state.user);
-  console.log(isLoggedIn, user);
 
   const selectedList = postList.filter((v) => {
     return mapSelected === v.location || mapSelected === "전국";
   });
 
-  console.log(selectedList);
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
   }, [dispatch]);

@@ -10,9 +10,7 @@ import { actionCreators as commentActions } from "../redux/modules/comment";
 const Comment = () => {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.user.user.username);
-  const data = useSelector((state) => state)
-  
-  
+
   const [comment, setComment] = React.useState();
   const changeComment = (e) => {
     setComment(e.target.value);
