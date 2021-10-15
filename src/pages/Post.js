@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
-  const imgurl = useSelector((state) => state.image.imageUrl);
+  const imageUrl = useSelector((state) => state.image.imageUrl);
   const classes = useStyles();
 
   const [title, setTitle] = React.useState("");

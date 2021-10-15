@@ -35,13 +35,13 @@ const Edit = (props) => {
   const preview = useSelector((state) => state.image.preview);
   const imageUrl = useSelector((state) => state.image.imageUrl);
   const post = useSelector((state) => state.post.list);
-  console.log(post);
+  // console.log(post);
 
   const [title, setTitle] = React.useState(post.title);
   const [phonenumber, setPhonenumber] = React.useState(post.phonenumber);
   const [location, setLocation] = React.useState(post.location);
   const [contents, setContents] = React.useState(post.contents);
-  console.log(title);
+  // console.log(title);
 
   const changeTitle = (e) => {
     setTitle(e.target.value);
@@ -85,8 +85,7 @@ const Edit = (props) => {
       const onePost = res.data;
       setList(...list, onePost);
       dispatch(postActions.addPost(onePost));
-      console.log("onePost");
-      console.log(onePost);
+      console.log(onePost, "onePostㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
     });
   }, []);
 
