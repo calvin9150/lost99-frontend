@@ -27,20 +27,17 @@ const Login = (props) => {
   const [password, setPwd] = React.useState('');
 
   const login = () => {
-        setCookie("username", username, 3);
-        setCookie("is_login", true, 3)
-        window.location.href = "/";
+        // setCookie("username", username, 3);
+        // setCookie("is_login", true, 3)
+        // window.location.href = "/";
 
+        console.log(username);       
+        if(username === "" || password === ""){
+            window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요");
+            return;
+        }
 
-        // history.push('/');
-
-    // console.log(username);       
-    // if(username === "" || password === ""){
-    //     window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요");
-    //     return;
-    // }
-
-    // dispatch(userActions.loginDB(username, password));
+        dispatch(userActions.loginDB(username, password));
 };
 
 

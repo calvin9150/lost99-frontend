@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup, Grid, Toolbar, Typography, AppBar } from "@material-ui/core";
+import { Button, ButtonGroup, Toolbar, Typography } from "@material-ui/core";
 
 
 
@@ -15,21 +15,7 @@ const Header = (props) =>{
   const dispatch = useDispatch();
 	// const is_token = document.cookie;
 
-  const [is_login, setIsLogin] = React.useState(false);
-
-  React.useEffect(() => {
-
-      // 쿠키를 가져오기
-      let cookie = getCookie("is_login");
-      // 쿠키 존재여부 확인 
-      console.log(cookie);
-      // 쿠키가 있으면?
-      if(cookie){
-          setIsLogin(true);
-      }else{
-          setIsLogin(false);
-      }
-  });
+  const is_login = document.cookie;
 
 	if (is_login) {
 		return (

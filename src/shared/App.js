@@ -25,15 +25,11 @@ function App() {
 
   const dispatch = useDispatch();
 
+  
+	useEffect(() => {
+		dispatch(loginAction.loginCheckDB());
+	}, []);
 
-  const token = getCookie("is_login")
-
-    // 토큰이 존재하면 로그인 유지 API 호출 
-  React.useEffect(()=>{
-  if(token){ 
-    dispatch(loginAction.loginCheckDB());
-    }
-  }, [])
 
   return (
     <React.Fragment>

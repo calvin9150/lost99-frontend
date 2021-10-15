@@ -16,20 +16,197 @@
   "contents": [
     {
       "id": 1,
+<<<<<<< HEAD
+      "title": "json-server",
+      "phonenumber": "typicode",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "서울",
+      "contents": "서울입니다",
+      "username": "tang"
+    },
+    {
+      "title": "asdas",
+      "phonenumber": "sdas",
+      "contents": "서울입니다2",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "서울",
+      "id": 2,
+      "username": "tang"
+    },
+    {
+      "title": "부산 분실물",
+      "phonenumber": "asdasd",
+      "contents": "부산에서 잃어버렸어요",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "부산",
+      "id": 3,
+      "username": "tang"
+    },
+    {
+      "title": "asd",
+      "phonenumber": "dasda",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "contents": "경기",
+      "location": "경기",
+      "id": 4,
+      "username": "tang"
+    },
+    {
+      "title": "충북",
+      "phonenumber": "wsx",
+      "contents": "cscasc",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "location": "충북",
+      "id": 5,
+      "username": "tang"
+    },
+    {
+      "title": "1231",
+      "phonenumber": "23123",
+      "contents": "3123123",
+      "location": "12312",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "id": 6,
+      "username": "tang"
+    },
+    {
+      "title": "asdaddddd",
+      "phonenumber": "asdasd",
+      "contents": "sadasd",
+      "location": "sdasdddd",
+      "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
+      "id": 7
+    },
+    {
+      "title": "aaaa",
+      "phonenumber": "aaaa",
+      "contents": "aaaa",
+      "location": "aaaa",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "id": 10
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 11,
+      "username": "gom"
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 12,
+      "username": "gom"
+    },
+    {
+      "title": "삭제 테스트용",
+      "phonenumber": "4",
+      "contents": "6666",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
+      "location": "전남",
+      "id": 13,
+      "username": "gom"
+    },
+    {
+      "title": "23",
+      "phonenumber": "23",
+      "contents": "23",
+      "location": "광주",
+      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/KakaoTalk_20211003_014352049.jpg",
+      "id": 14
+=======
       "title": "json-ser124124vasdasder",
       "phonenumber": "t4444ypicode12asdas",
       "contents": "서444울입니dasdad다",
       "location": "강원",
       "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png"
+>>>>>>> ca3d4de1c621c9158f0374b2c74361f9689b2903
     },
     {
       "title": "123",
       "phonenumber": "123",
       "contents": "sdadasd",
       "location": "대구",
+<<<<<<< HEAD
+      "imgurl": "",
+      "id": 15
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "user": [
+    {
+      "id": 1,
+      "user_id": "user1",
+      "password": "test1"
+    },
+    {
+      "id": 2,
+      "user_id": "user2",
+      "password": "test2"
+    },
+    {
+      "id": "5DUCJLG"
+    },
+    {
+      "id": "testing3",
+      "password": "testing3"
+    },
+    {
+      "user_id": "testing4",
+      "password": "testing4",
+      "id": 3
+    },
+    {
+      "username": "signupworking",
+      "email": "work@work.com",
+      "password": "work1234",
+      "id": 4
+    },
+    {
+      "username": "test1234567",
+      "email": "test123@test.com",
+      "password": "test1234",
+      "id": 5
+    },
+    {
+      "username": "test1234",
+      "email": "test12345@gmail.com",
+      "password": "test12345@gmail.com",
+      "id": 6
+    },
+    {
+      "username": "test123",
+      "email": "test123@test.com",
+      "password": "test1234",
+      "passwordCheck": "test1234",
+      "id": 7
+    }
+  ],
+  "login": [
+    {
+      "username": "test1234",
+      "password": "test1234",
+      "id": 1
+    },
+    {
+      "username": "test1234",
+      "password": "test1234",
+=======
       "imageUrl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/%EA%B0%9C.jpg",
       "username": "gom",
+>>>>>>> ca3d4de1c621c9158f0374b2c74361f9689b2903
       "id": 2
     }
   ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ca3d4de1c621c9158f0374b2c74361f9689b2903
