@@ -3,11 +3,24 @@ import styled from "styled-components";
 //material
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+//redux & api
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as commentActions } from "../redux/modules/comment";
 
 const Comment = () => {
-  const [comment, setComment] = React.useState("");
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.user.user.username);
+  const data = useSelector((state) => state)
+  
+  
+  const [comment, setComment] = React.useState();
   const changeComment = (e) => {
     setComment(e.target.value);
+    // console.log(e.target.value)
+  };
+
+  const addComment = () => {
+    dispatch(commentActions.addComment({ comment, username }));
   };
   return (
     <React.Fragment>
@@ -37,7 +50,12 @@ const Comment = () => {
             />
           </Grid>
           <Grid style={{ width: "10%", marginLeft: "10px" }}>
-            <Button variant="contained" color="secondary" size="large">
+            <Button
+              onClick={addComment}
+              variant="contained"
+              color="secondary"
+              size="large"
+            >
               추가
             </Button>
           </Grid>
@@ -52,7 +70,7 @@ const Comment = () => {
             <Text>동건</Text>
           </Grid>
           <Grid style={{ width: "80%" }}>
-            <Text>멍멍이멍멍이멍멍이멍멍이멍멍이</Text>
+            <Text></Text>
           </Grid>
         </Grid>
       </Grid>

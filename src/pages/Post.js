@@ -36,6 +36,7 @@ const Post = (props) => {
   const imageUrl = useSelector((state) => state.image.imageUrl);
   const username = useSelector((state) => state.user.user.username);
   
+  
   const classes = useStyles();
 
   const [title, setTitle] = React.useState("");

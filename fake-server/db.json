@@ -16,7 +16,6 @@
   "contents": [
     {
       "id": 1,
-<<<<<<< HEAD
       "title": "json-server",
       "phonenumber": "typicode",
       "imgurl": "https://smtmap.com/wp-content/uploads/2020/06/%EA%B3%B0-%EA%BF%88.jpg",
@@ -119,22 +118,23 @@
       "location": "광주",
       "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/KakaoTalk_20211003_014352049.jpg",
       "id": 14
-=======
-      "title": "json-ser124124vasdasder",
-      "phonenumber": "t4444ypicode12asdas",
-      "contents": "서444울입니dasdad다",
-      "location": "강원",
-      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png"
->>>>>>> ca3d4de1c621c9158f0374b2c74361f9689b2903
     },
     {
       "title": "123",
       "phonenumber": "123",
       "contents": "sdadasd",
       "location": "대구",
-<<<<<<< HEAD
       "imgurl": "",
       "id": 15
+    },
+    {
+      "title": "123",
+      "phonenumber": "123",
+      "contents": "123",
+      "location": "부산",
+      "imageUrl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/%EA%B0%9C.jpg",
+      "username": "dddd",
+      "id": 16
     }
   ],
   "profile": {
@@ -198,15 +198,12 @@
     {
       "username": "test1234",
       "password": "test1234",
-=======
-      "imageUrl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/%EA%B0%9C.jpg",
-      "username": "gom",
->>>>>>> ca3d4de1c621c9158f0374b2c74361f9689b2903
       "id": 2
+    },
+    {
+      "username": "dddd",
+      "password": "1234",
+      "id": 3
     }
   ]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ca3d4de1c621c9158f0374b2c74361f9689b2903

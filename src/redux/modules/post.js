@@ -28,6 +28,7 @@ const addPostsMiddleware = (post) => {
       imageUrl: post.imageUrl,
       username: post.username,
     });
+    // console.log(getState())
     dispatch(addPost(post));
     history.push("/");
   };
