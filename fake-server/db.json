@@ -112,15 +112,6 @@
       "username": "gom"
     },
     {
-<<<<<<< HEAD
-      "title": "삭제 테스트용",
-      "phonenumber": "4",
-      "contents": "6666",
-      "imgurl": "https://s3.ap-northeast-2.amazonaws.com/s3.lost99.com/heart_gray.png",
-      "location": "전남",
-      "id": 14,
-      "username": "gom"
-=======
       "title": "23",
       "phonenumber": "23",
       "contents": "23",
@@ -135,7 +126,6 @@
       "location": "대구",
       "imgurl": "",
       "id": 15
->>>>>>> 24a0633c5fa3b25716dc7ccd4cb840120804abd6
     }
   ],
   "profile": {
@@ -268,8 +258,4 @@
       "id": 13
     }
   ]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 24a0633c5fa3b25716dc7ccd4cb840120804abd6
