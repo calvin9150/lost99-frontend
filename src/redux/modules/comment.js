@@ -14,21 +14,31 @@ const addComment = createAction(ADD_COMMENT, (comment) => ({ comment }));
 
 //initial state
 const initialState = {
-  comment: "dddd",
+  list: [],
 };
 
 //middlewarse
-
-
-
-
+const addCommentMiddleware = (comment, id) => {
+  return (dispatch, getState, { history }) => {
+    api
+      .post(`/contents/${id}/comment`, {
+        comment: comment,
+      })
+      .then((res) => {
+        dispatch(addComment(comment));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 //reducer
 export default handleActions(
   {
     [ADD_COMMENT]: (state, action) =>
       produce(state, (draft) => {
-        draft.comment = action.payload.comment;
+        draft.list = action.payload.comment;
       }),
     // [DELETE_COMMENT]: (state, action) =>
     //   produce(state, (draft) => {
@@ -46,6 +56,7 @@ export default handleActions(
 //action creator export
 const actionCreators = {
   addComment,
+  addCommentMiddleware,
 };
 
 export { actionCreators };

@@ -5,8 +5,8 @@ import { actionCreators as postsActions } from "../redux/modules/posts";
 //react hook
 import { useSelector, useDispatch } from "react-redux";
 //components
-import Comment from "../components/Comment";
-
+import CommentWrite from "../components/CommentWrite";
+import CommentList from "../components/CommentList";
 const Detail = (props) => {
   const dispatch = useDispatch();
   const id = props.match.params.id;
@@ -50,7 +50,20 @@ const Detail = (props) => {
           </Grid>
         </Grid>
       </Container>
-      <Container>{/* <Comment /> */}</Container>
+      <Container
+        style={{
+          margin: "10px auto",
+        }}
+      >
+        <Grid style={{ padding: "15px" }}>
+          <CommentWrite id={id} />
+        </Grid>
+      </Container>
+      <Container>
+        <Grid style={{ padding: "15px" }}>
+          <CommentList />
+        </Grid>
+      </Container>
     </>
   );
 };
@@ -59,11 +72,9 @@ export default Detail;
 
 const Container = styled.div`
   display: flex;
-  width: 80vw;
-  height: auto;
+  width: 80%;
   margin: auto;
   justify-content: space-around;
-
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 720px) {
@@ -76,9 +87,8 @@ const Grid = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  margin: 10px 0px;
+  margin: 5px 0px;
   overflow: hidden;
-  
 `;
 
 const PreviewGrid = styled.div`
@@ -91,8 +101,6 @@ const PreviewGrid = styled.div`
     display: flex;
     justify-content: center;
   }
-
-  
 `;
 
 const Image = styled.img`
@@ -100,7 +108,7 @@ const Image = styled.img`
   height: auto;
   object-fit: cover;
   @media screen and (max-width: 720px) {
-    width:100%
+    width: 100%;
   }
 `;
 
