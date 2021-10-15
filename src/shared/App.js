@@ -33,8 +33,8 @@ function App() {
 
   return (
     <React.Fragment>
-      <ConnectedRouter history={history}>
       <Header></Header>
+      <ConnectedRouter history={history}>
         <Route path="/" exact component={Main} />
         <Route path="/mypage" exact component={Mypage} />
         <Route path="/post" exact component={Post} />
