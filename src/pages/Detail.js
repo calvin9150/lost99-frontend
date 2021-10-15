@@ -50,11 +50,7 @@ const Detail = (props) => {
           </Grid>
         </Grid>
       </Container>
-      <Container>
-        
-          <Comment />
-        
-      </Container>
+      <Container>{/* <Comment /> */}</Container>
     </>
   );
 };
