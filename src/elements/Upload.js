@@ -37,7 +37,7 @@ const Upload = (props) => {
   const uploadDB = () => {
     let image = fileInput.current.files[0];
     dispatch(imageActions.uploadImageDB(image));
-    window.alert("완료!")
+    window.alert("업로드 완료")
   };
 
   return (

@@ -4,6 +4,7 @@ import styled from "styled-components";
 //redux & api
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
+import { actionCreators as imageActions } from "../redux/modules/image";
 
 //elements
 import Upload from "../elements/Upload";
@@ -68,6 +69,7 @@ const Post = (props) => {
     }
     const post = { title, phonenumber, contents, location, imageUrl };
     dispatch(postActions.addPostsMiddleware(post));
+    dispatch(imageActions.deletePreview(""))
   };
 
   const locationName = [
@@ -126,6 +128,7 @@ const Post = (props) => {
             size="small"
             value={title}
             onChange={changeTitle}
+            autoComplete="off"
           />
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
@@ -137,6 +140,7 @@ const Post = (props) => {
             size="small"
             value={phonenumber}
             onChange={changePhonenumber}
+            autoComplete="off"
           />
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
@@ -150,6 +154,7 @@ const Post = (props) => {
             onChange={changeContents}
             multiline
             minRows="5"
+            autoComplete="off"
           />
         </Grid>
 

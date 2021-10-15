@@ -35,13 +35,12 @@ const Edit = (props) => {
   const preview = useSelector((state) => state.image.preview);
   const imageUrl = useSelector((state) => state.image.imageUrl);
   const post = useSelector((state) => state.post.list);
-  // console.log(post);
 
+  const [list, setList] = React.useState([]);
   const [title, setTitle] = React.useState(post.title);
   const [phonenumber, setPhonenumber] = React.useState(post.phonenumber);
   const [location, setLocation] = React.useState(post.location);
   const [contents, setContents] = React.useState(post.contents);
-  // console.log(title);
 
   const changeTitle = (e) => {
     setTitle(e.target.value);
@@ -59,6 +58,7 @@ const Edit = (props) => {
   const updatePost = () => {
     const _post = { id, title, phonenumber, contents, location, imageUrl };
     dispatch(postActions.updatePostMiddleware(id, _post));
+    dispatch(imageActions.deletePreview(""));
   };
   const locationName = [
     "부산",
@@ -79,13 +79,12 @@ const Edit = (props) => {
     "전남",
     "울산",
   ];
-  const [list, setList] = React.useState([]);
+
   useEffect(() => {
     api.get(`/contents/${id}`).then((res) => {
       const onePost = res.data;
       setList(...list, onePost);
       dispatch(postActions.addPost(onePost));
-      console.log(onePost, "onePostㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
     });
   }, []);
 
@@ -135,6 +134,7 @@ const Edit = (props) => {
             size="small"
             value={title}
             onChange={changeTitle}
+            autoComplete="off"
           />
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
@@ -147,6 +147,7 @@ const Edit = (props) => {
             size="small"
             value={phonenumber}
             onChange={changePhonenumber}
+            autoComplete="off"
           />
         </Grid>
         <Grid style={{ padding: "8px 0px" }}>
@@ -159,6 +160,7 @@ const Edit = (props) => {
             size="small"
             value={contents}
             onChange={changeContents}
+            autoComplete="off"
             multiline
             minRows="5"
           />
@@ -170,6 +172,7 @@ const Edit = (props) => {
           color="primary"
           className={classes.margin}
           onClick={updatePost}
+          autoComplete="off"
         >
           게시글 수정
         </Button>
