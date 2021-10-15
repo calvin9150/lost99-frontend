@@ -60,9 +60,11 @@ const Main = (props) => {
 
   const {
     list: postList,
-    loading,
+    isLoading: loading,
     mapSelected,
   } = useSelector((state) => state.posts);
+
+  console.log(postList, "postList");
 
   const selectedList = postList.filter((v) => {
     return mapSelected === v.location || mapSelected === "전국";
@@ -88,6 +90,7 @@ const Main = (props) => {
             userId={v.username}
             id={v.id}
             location={v.location}
+            loading={loading}
           />
         ))}
       </CardsWrappper>
