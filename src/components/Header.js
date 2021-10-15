@@ -20,9 +20,9 @@ const Header = (props) =>{
 	if (is_login) {
 		return (
       <Toolbar padding = "16px">
-
+      
       <Typography style={{ flex: 1 }} noWrap sx={{ flexGrow: 1 }} variant="h6" color="inherit">
-        분실물 찾기 
+        hihihi
       </Typography>
 
       <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
