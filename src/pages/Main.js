@@ -90,6 +90,7 @@ const Main = (props) => {
             userId={v.username}
             id={v.id}
             location={v.location}
+            loading={loading}
           />
         ))}
       </CardsWrappper>

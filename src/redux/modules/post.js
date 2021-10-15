@@ -18,17 +18,19 @@ const initialState = {
 //middlewarse
 const addPostsMiddleware = (post) => {
   return (dispatch, getState, { history }) => {
+    console.log("post");
+    console.log(post);
     api.post("/contents", {
       title: post.title,
       phonenumber: post.phonenumber,
       contents: post.contents,
       location: post.location,
-      imageUrl: post.imgurl,
+      imageUrl: post.imageUrl,
       username: "gom",
-    })
+    });
     dispatch(addPost(post));
     history.push("/");
-  }
+  };
 };
 
 // const getOnePostsMiddleware = (id) => {
@@ -54,11 +56,19 @@ const updatePostMiddleware = (id, _post) => {
         phonenumber: _post.phonenumber,
         contents: _post.contents,
         location: _post.location,
-        imgurl: _post.imgurl,
+        imageUrl: _post.imageUrl,
       })
       .then((res) => {
         console.log(res);
-        dispatch(updatePost(_post.title, _post.phonenumber, _post.contents, _post.location, _post.imgurl));
+        dispatch(
+          updatePost(
+            _post.title,
+            _post.phonenumber,
+            _post.contents,
+            _post.location,
+            _post.imageUrl
+          )
+        );
         history.replace("/");
       })
       .catch((err) => {

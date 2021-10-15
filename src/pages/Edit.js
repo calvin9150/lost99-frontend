@@ -33,7 +33,7 @@ const Edit = (props) => {
   const classes = useStyles();
 
   const preview = useSelector((state) => state.image.preview);
-  const imgurl = useSelector((state) => state.image.image_url);
+  const imageUrl = useSelector((state) => state.image.imageUrl);
   const post = useSelector((state) => state.post.list);
   console.log(post);
 
@@ -57,7 +57,7 @@ const Edit = (props) => {
   };
 
   const updatePost = () => {
-    const _post = { id, title, phonenumber, contents, location, imgurl };
+    const _post = { id, title, phonenumber, contents, location, imageUrl };
     dispatch(postActions.updatePostMiddleware(id, _post));
   };
   const locationName = [
@@ -85,6 +85,8 @@ const Edit = (props) => {
       const onePost = res.data;
       setList(...list, onePost);
       dispatch(postActions.addPost(onePost));
+      console.log("onePost");
+      console.log(onePost);
     });
   }, []);
 
@@ -93,7 +95,7 @@ const Edit = (props) => {
     setPhonenumber(post.phonenumber);
     setLocation(post.location);
     setContents(post.contents);
-    dispatch(imageActions.setPreview(post.imgurl));
+    dispatch(imageActions.setPreview(post.imageUrl));
   }, [post]);
 
   return (
