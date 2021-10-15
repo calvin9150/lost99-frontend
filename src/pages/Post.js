@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const Post = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
-  const imgurl = useSelector((state) => state.image.image_url);
+  const imgurl = useSelector((state) => state.image.imageUrl);
   const classes = useStyles();
 
   const [title, setTitle] = React.useState("");
@@ -54,14 +54,19 @@ const Post = (props) => {
   };
 
   const addPost = () => {
-    if(title === "" || phonenumber === "" || location === "" || contents === "") {
-      return window.alert("빈칸을 입력해주세요")
+    if (
+      title === "" ||
+      phonenumber === "" ||
+      location === "" ||
+      contents === ""
+    ) {
+      return window.alert("빈칸을 입력해주세요");
     }
-    
-    if(preview === null) {
-      return window.alert("이미지 선택 후 업로드 버튼을 눌려주세요")
+
+    if (preview === null) {
+      return window.alert("이미지 선택 후 업로드 버튼을 눌려주세요");
     }
-    const post = { title, phonenumber, contents, location, imgurl };
+    const post = { title, phonenumber, contents, location, imageUrl };
     dispatch(postActions.addPostsMiddleware(post));
   };
 
@@ -119,7 +124,6 @@ const Post = (props) => {
             variant="outlined"
             color="secondary"
             size="small"
-            required
             value={title}
             onChange={changeTitle}
           />
