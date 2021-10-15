@@ -19,7 +19,7 @@ const deletePost = createAction(DELETE_POST, (postId) => ({ postId }));
 const updateMapSelected = createAction(UPDATE_MAP_SELECTED, (mapSelected) => ({
   mapSelected,
 }));
-const addPost = createAction(ADD_POST, (onePost) => ({onePost}));
+const addPost = createAction(ADD_POST, (onePost) => ({ onePost }));
 
 const initialState = {
   list: [
@@ -146,7 +146,7 @@ export default handleActions(
       }),
     [ADD_POST]: (state, action) =>
       produce(state, (draft) => {
-        draft.list = action.payload.onePost;
+        draft.list.push(action.payload.onePost);
       }),
   },
   initialState
