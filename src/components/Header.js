@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup, Toolbar, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, Link, Toolbar, Typography } from "@material-ui/core";
 
 
 
@@ -21,9 +21,17 @@ const Header = (props) =>{
 		return (
       <Toolbar padding = "16px">
       
-      <Typography style={{ flex: 1 }} noWrap sx={{ flexGrow: 1 }} variant="h6" color="inherit">
-        hihihi
-      </Typography>
+      <Link
+      style={{ flex: 1 }} 
+      noWrap sx={{ flexGrow: 1 }} 
+      variant="h6" color="inherit"
+      onClick = {()=>{
+        history.push('/');
+      }}
+
+      >
+        분실물찾기
+      </Link>
 
       <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
           <Button
@@ -48,8 +56,16 @@ const Header = (props) =>{
 
         <Toolbar padding = "16px">
 
-        <Typography style={{ flex: 1 }} noWrap sx={{ flexGrow: 1 }} variant="h6" color="inherit">
-          Lost and Found 99
+        <Typography 
+        style={{ flex: 1 }} 
+        noWrap 
+        sx={{ flexGrow: 1 }} 
+        variant="h6" 
+        color="inherit"
+        onClick = {()=>{
+          history.push('/');
+        }}>
+          분실물찾기
         </Typography>
 
         <ButtonGroup  href="#" variant="outlined"   size="small" variant="contained" aria-label="outlined primary button group" >
