@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 //redux & api
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as commentActions } from "../redux/modules/comment";
-import { CommentSharp } from "@material-ui/icons";
+
 
 const CommentWrite = (props) => {
   const dispatch = useDispatch();
@@ -19,11 +19,11 @@ const CommentWrite = (props) => {
   
   const changeComment = (e) => {
     setComment(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   const addComment = () => {
-    dispatch(commentActions.addCommentMiddleware({ id, comment }));
+    dispatch(commentActions.addComment({ id, comment }));
   };
 
   return (

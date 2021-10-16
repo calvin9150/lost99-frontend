@@ -3,24 +3,52 @@ import styled from "styled-components";
 //material
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { useSelector } from "react-redux";
 
-const CommentList = () => {
-  const comment_list = useSelector((state) => state.comment.list);
-  console.log(comment_list);
+//redux & api
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as commentActions } from "../redux/modules/comment";
 
-  const updateComment = () => {
+const CommentList = (props) => {
+  const post_id = props.id; // post(parmas 번호)
+  const dispatch = useDispatch();
+  const comment_list = useSelector((state) => state.comment.list);// 모든 comment
+  const user_id = useSelector((state) => state.user.user.username);// 로그인한 유저 아이디
+  
 
-  };
-  const deleteComment = () => {
+  // const id = comment_list.id;
 
-  };
-
+  // console.log(comment_list);
 
   if (comment_list.length === 0) {
     return null;
   }
 
+  return (
+    <React.Fragment>
+      {comment_list.map((c) => {
+        return <CommentItem key={c.id} {...c} />;
+      })}
+    </React.Fragment>
+  );
+};
+
+export default CommentList;
+
+const CommentItem = (props) => {
+  const dispatch = useDispatch();
+  const comment_list = useSelector((state) => state.comment.list);
+  const user_id = useSelector((state) => state.user.user.username);
+  const [comment, setComment] = React.useState(comment_list.comment);
+  // const commentid = comment_list.id;
+  const _comment = comment_list.comment;
+
+  const updateComment = () => {
+    dispatch(commentActions.updateComment({  _comment }));
+  };
+  const deleteComment = () => {
+    dispatch(commentActions.deleteComment({  }));
+  };
+  console.log(props)
   return (
     <React.Fragment>
       <Grid
@@ -30,7 +58,7 @@ const CommentList = () => {
         }}
       >
         <Grid>
-          <Text>{comment_list.username}</Text>
+          <Text>{user_id}</Text>
         </Grid>
       </Grid>
       <Grid style={{ marginTop: "10px" }}>
@@ -41,7 +69,8 @@ const CommentList = () => {
           color="secondary"
           size="small"
           multiline
-          value={comment_list.comment}
+          onChange={setComment}
+          value={comment_list && _comment}
           minRows="2"
           autoComplete="off"
         />
@@ -79,8 +108,6 @@ const CommentList = () => {
     </React.Fragment>
   );
 };
-
-export default CommentList;
 
 const Grid = styled.div`
   display: flex;

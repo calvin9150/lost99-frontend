@@ -61,7 +61,7 @@ const Detail = (props) => {
       </Container>
       <Container>
         <Grid style={{ padding: "15px" }}>
-          <CommentList />
+          <CommentList id={id}/>
         </Grid>
       </Container>
     </>
