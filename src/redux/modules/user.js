@@ -66,7 +66,8 @@ const loginDB = (username, password) => {
 
         // 쿠키에 토큰 저장
         console.log(res.data.token);
-        setCookie("token", res.data.token, 7);
+        // setCookie("token", res.data.token, 7);
+        localStorage.setItem("token", res.data.token);
 
         window.location.href = "/";
       })
@@ -94,20 +95,22 @@ const loginDB = (username, password) => {
 
 const kakaoLogin = (code) => {
   return function (dispatch, getState, { history }) {
-    axios
-      .get(`http://3.35.208.142/oauth/callback/kakao?code=${code}`)
+    console.log("코드다");
+    console.log(code);
+    api
+      .get(`/kakao/callback?code=${code}`)
       .then((res) => {
-        console.log(res); // 토큰이 넘어올 것임
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.username);
 
-        const ACCESS_TOKEN = res.data.accessToken;
+        // const ACCESS_TOKEN = res.data.accessToken;
 
-        localStorage.setItem("token", ACCESS_TOKEN); //예시로 로컬에 저장함
-
-        history.replace("/main"); // 토큰 받았았고 로그인됐으니 화면 전환시켜줌(메인으로)
+        dispatch(setUser({ username: res.data.username }));
+        window.location.href = "/";
       })
       .catch((err) => {
         console.log("소셜로그인 에러", err);
-        window.alert("로그인에 실패하였습니다.");
+        alert("로그인에 실패하였습니다.");
         history.replace("/login"); // 로그인 실패하면 로그인화면으로 돌려보냄
       });
   };
@@ -116,7 +119,7 @@ const kakaoLogin = (code) => {
 const loginCheckDB = () => {
   return function (dispatch, getState, { history }) {
     const username = localStorage.getItem("username");
-    const tokenCheck = getCookie("token");
+    const tokenCheck = localStorage.getItem("token");
 
     if (tokenCheck) {
       dispatch(setUser({ username: username }));
@@ -146,7 +149,8 @@ export default handleActions(
 
     [LOG_OUT]: (state, action) =>
       produce(state, (draft) => {
-        deleteCookie("token");
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
         draft.user = null;
         draft.is_login = false;
       }),

@@ -9,9 +9,9 @@ const KakaoRedirect = (props) => {
   // 인가코드
   let code = new URL(window.location.href).searchParams.get("code");
 
-  useEffect(async () => {
-    await dispatch(userActions.kakaoLogin(code));
-  }, [dispatch, userActions]);
+  useEffect(() => {
+    dispatch(userActions.kakaoLogin(code));
+  }, [dispatch, code]);
 
   return <CircularProgress />;
 };

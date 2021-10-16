@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "../shared/Cookie";
 
 export const api = axios.create({
   // 요청을 보낼 주소 설정
@@ -10,11 +11,6 @@ export const api = axios.create({
   },
 });
 
-function getCookie(name) {
-  const value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  return value ? value[2] : null;
-}
-
 const getToken = async () => {
   const token = getCookie("token");
   if (token) {
@@ -24,10 +20,10 @@ const getToken = async () => {
   }
 };
 
-api.interceptors.request.use(async (config) => {
+api.interceptors.request.use((config) => {
   config.headers["Content-Type"] = "application/json; charset=utf-8";
   config.headers["X-Requested-With"] = "XMLHttpRequest";
   config.headers["Accept"] = "*/*";
-  config.headers["authorization"] = await getToken();
+  config.headers["authorization"] = getToken();
   return config;
 });

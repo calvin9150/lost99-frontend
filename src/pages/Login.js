@@ -104,7 +104,9 @@ const Login = (props) => {
               variant="contained"
               sx={{ mt: 0.1, mb: 2 }}
               style={{ backgroundColor: "#FEE500", color: "#000000" }}
-              href="https://kauth.kakao.com/oauth/authorize?client_id=d3f640e4eb5a24a8676aa2cedc15babe&redirect_uri=http://gomtang.shop/user/kakao/callback&response_type=code"
+              href={
+                "https://kauth.kakao.com/oauth/authorize?client_id=d3f640e4eb5a24a8676aa2cedc15babe&redirect_uri=http://gomtang.shop/api/kakao/callback&response_type=code"
+              }
             >
               카카오 로그인
             </Button>
