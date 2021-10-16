@@ -23,12 +23,7 @@ const Login = (props) => {
   const [password, setPwd] = React.useState("");
 
   const login = () => {
-<<<<<<< HEAD
-=======
-    // setCookie("username", username, 3);
-    // setCookie("is_login", true, 3)
-    // window.location.href = "/";
->>>>>>> bbe4d06be50c3fcf93893077af556e37476caad4
+
 
     if (username === "" || password === "") {
       window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요");
@@ -55,32 +50,6 @@ const Login = (props) => {
             flexDirection: "column",
             alignItems: "center",
           }}
-<<<<<<< HEAD
-          />
-          <Button
-            type="button"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 1.5 }}
-            onClick={() => {
-              console.log("로그인버튼클릭!");
-              login()}}
-          >
-            로그인하기
-          </Button>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 0.1, mb: 2, }}
-            style={{backgroundColor:'#FEE500', color:'#000000'}}
-            href = "https://kauth.kakao.com/oauth/authorize?client_id=d3f640e4eb5a24a8676aa2cedc15babe&redirect_uri=http://user/kakao/callback&response_type=code"
-          >
-            카카오 로그인
-          </Button>
-
-=======
         >
           <Avatar sx={{ m: 1, bgcolor: "gray" }}>
             <LockOutlinedIcon />
@@ -137,11 +106,11 @@ const Login = (props) => {
               variant="contained"
               sx={{ mt: 0.1, mb: 2 }}
               style={{ backgroundColor: "#FEE500", color: "#000000" }}
+              href = "https://kauth.kakao.com/oauth/authorize?client_id=d3f640e4eb5a24a8676aa2cedc15babe&redirect_uri=http://gomtang.shop/user/kakao/callback&response_type=code"
             >
               카카오 로그인
             </Button>
           </Box>
->>>>>>> bbe4d06be50c3fcf93893077af556e37476caad4
         </Box>
       </Container>
     </ThemeProvider>
