@@ -27,9 +27,6 @@ const Login = (props) => {
   const [password, setPwd] = React.useState('');
 
   const login = () => {
-        // setCookie("username", username, 3);
-        // setCookie("is_login", true, 3)
-        // window.location.href = "/";
 
         console.log(username);       
         if(username === "" || password === ""){
@@ -107,6 +104,7 @@ const Login = (props) => {
             variant="contained"
             sx={{ mt: 0.1, mb: 2, }}
             style={{backgroundColor:'#FEE500', color:'#000000'}}
+            href = "https://kauth.kakao.com/oauth/authorize?client_id=d3f640e4eb5a24a8676aa2cedc15babe&redirect_uri=http://user/kakao/callback&response_type=code"
           >
             카카오 로그인
           </Button>
