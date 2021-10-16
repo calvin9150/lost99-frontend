@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { api } from "../lib/apis";
 import { actionCreators as postsActions } from "../redux/modules/posts";
+import { actionCreators as commentActions } from "../redux/modules/comment";
 //react hook
 import { useSelector, useDispatch } from "react-redux";
 //components
@@ -14,13 +15,14 @@ const Detail = (props) => {
   // const user_info = useSelector((state) => state.user.user)
 
   const post_list = useSelector((state) => state.posts.list); //리덕스의 post리스트들
-
   const post_idx = post_list.findIndex((p) => p.id == id); //리스트 중에서 주소창Id 와 같은 post순번
-
   const post = post_list[post_idx]; //상세페이지에서 보여줄 post
+  const commentList = useSelector((state) => state.comment.list);
+  console.log("commentList");
 
   useEffect(() => {
     dispatch(postsActions.getPostsMiddleware());
+    dispatch(commentActions.getCommentsMiddleware(id));
   }, [dispatch]);
 
   return (
@@ -59,11 +61,16 @@ const Detail = (props) => {
           <CommentWrite id={id} />
         </Grid>
       </Container>
-      <Container>
-        <Grid style={{ padding: "15px" }}>
-          <CommentList id={id}/>
-        </Grid>
-      </Container>
+      <CommentContainer>
+        {commentList.map((v, i) => (
+          <CommentList
+            key={i}
+            id={id}
+            comment={v.comment}
+            username={v.username}
+          />
+        ))}
+      </CommentContainer>
     </>
   );
 };
@@ -76,6 +83,21 @@ const Container = styled.div`
   margin: auto;
   justify-content: space-around;
   border-radius: 4px;
+  color: black;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
+`;
+
+const CommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  justify-content: space-around;
+  border-radius: 4px;
+  color: black;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 720px) {
     flex-direction: column;

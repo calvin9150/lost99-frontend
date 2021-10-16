@@ -53,19 +53,15 @@ const loginDB = (username, password) => {
       })
 
       .then((res) => {
-        console.log(res.data);
-        console.log(res);
         dispatch(
           setUser({
             username: username,
           })
         );
 
-        console.log(res.data.username);
         localStorage.setItem("username", res.data.username);
 
         // 쿠키에 토큰 저장
-        console.log(res.data.token);
         // setCookie("token", res.data.token, 7);
         localStorage.setItem("token", res.data.token);
 
@@ -95,8 +91,6 @@ const loginDB = (username, password) => {
 
 const kakaoLogin = (code) => {
   return function (dispatch, getState, { history }) {
-    console.log("코드다");
-    console.log(code);
     api
       .get(`/kakao/callback?code=${code}`)
       .then((res) => {

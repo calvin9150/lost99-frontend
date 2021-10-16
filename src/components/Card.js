@@ -66,7 +66,6 @@ const CardLayout = ({
   // };
 
   useEffect(() => {
-    console.log(userId, username?.username, isLoggedIn);
     if (userId === username?.username && isLoggedIn) {
       setIsMine(true);
     }
@@ -81,12 +80,10 @@ const CardLayout = ({
 
   const onClickDelete = useCallback(() => {
     if (window.confirm(`[ ${title} ]을 삭제하실건가요?`)) {
-      console.log(id, "id");
       dispatch(postsActions.deletePostMiddleware(id));
       setIsMine(false);
       return;
     }
-    console.log(id, "id");
   }, [id, dispatch, title]);
 
   const onClickEdit = useCallback(() => {

@@ -30,7 +30,7 @@ const Header = (props) => {
             history.push("/");
           }}
         >
-          분실물찾기
+          LOST99
         </Link>
 
         <ButtonGroup
@@ -71,7 +71,7 @@ const Header = (props) => {
           history.push("/");
         }}
       >
-        분실물찾기
+        LOST99
       </Typography>
 
       <ButtonGroup
