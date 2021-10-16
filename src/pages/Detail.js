@@ -5,8 +5,8 @@ import { actionCreators as postsActions } from "../redux/modules/posts";
 //react hook
 import { useSelector, useDispatch } from "react-redux";
 //components
-import Comment from "../components/Comment";
-
+import CommentWrite from "../components/CommentWrite";
+import CommentList from "../components/CommentList";
 const Detail = (props) => {
   const dispatch = useDispatch();
   const id = props.match.params.id;
@@ -50,10 +50,19 @@ const Detail = (props) => {
           </Grid>
         </Grid>
       </Container>
+      <Container
+        style={{
+          margin: "10px auto",
+        }}
+      >
+        <Grid style={{ padding: "15px" }}>
+          <CommentWrite id={id} />
+        </Grid>
+      </Container>
       <Container>
-        
-          <Comment />
-        
+        <Grid style={{ padding: "15px" }}>
+          <CommentList />
+        </Grid>
       </Container>
     </>
   );
@@ -63,15 +72,13 @@ export default Detail;
 
 const Container = styled.div`
   display: flex;
-  width: 80vw;
-  height: auto;
+  width: 80%;
   margin: auto;
   justify-content: space-around;
-
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 720px) {
-    width: 90vw;
+    flex-direction: column;
   }
 `;
 
@@ -79,31 +86,20 @@ const Grid = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 35vw;
-  margin: 10px 0px;
+  width: 100%;
+  margin: 5px 0px;
   overflow: hidden;
-  @media screen and (max-width: 1280px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media screen and (max-width: 820px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
 `;
 
 const PreviewGrid = styled.div`
-  width: 35vw;
+  width: 100%;
   height: auto;
   margin: 10px auto;
   box-sizing: border-box;
-  // border: 1px solid black;
-  overflow: hidden;
-  @media screen and (max-width: 1280px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  @media screen and (max-width: 820px) {
-    grid-template-columns: repeat(1, 1fr);
+  @media screen and (max-width: 720px) {
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -111,6 +107,9 @@ const Image = styled.img`
   width: 35vw;
   height: auto;
   object-fit: cover;
+  @media screen and (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.h1`

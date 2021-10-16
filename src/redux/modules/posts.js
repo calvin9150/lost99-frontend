@@ -7,6 +7,7 @@ const GET_POSTS = "GET_POSTS";
 const LOADING = "LOADING";
 const DELETE_POST = "DELETE_POST";
 const UPDATE_MAP_SELECTED = "UPDATE_MAP_SELECTED";
+const ADD_POST = "ADD_POST";
 
 const getPosts = createAction(GET_POSTS, (postList) => ({
   postList,
@@ -18,6 +19,7 @@ const deletePost = createAction(DELETE_POST, (postId) => ({ postId }));
 const updateMapSelected = createAction(UPDATE_MAP_SELECTED, (mapSelected) => ({
   mapSelected,
 }));
+const addPost = createAction(ADD_POST, (onePost) => ({ onePost }));
 
 const initialState = {
   list: [
@@ -142,12 +144,17 @@ export default handleActions(
       produce(state, (draft) => {
         draft.mapSelected = action.payload.mapSelected;
       }),
+    [ADD_POST]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list.push(action.payload.onePost);
+      }),
   },
   initialState
 );
 
 const actionCreators = {
   getPosts,
+  addPost,
   getPostsMiddleware,
   deletePostMiddleware,
   updateMapSelected,
