@@ -43,6 +43,7 @@ const getCommentsMiddleware = (contentid) => {
 
 const addCommentMiddleware = (id, comment, username) => {
   return (dispatch, getState, { history }) => {
+    console.log(comment, username);
     api
       .post(`/contents/${id}/comments`, {
         comment: comment,
