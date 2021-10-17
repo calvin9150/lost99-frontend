@@ -12,18 +12,23 @@ export const api = axios.create({
 });
 
 const getToken = async () => {
-  const token = getCookie("token");
+  const token = localStorage.getItem("token");
+  // const token =
+  //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QxMjMiLCJpYXQiOjE2MzQzNzY3ODIsImV4cCI6MTYzNDM3ODU4Mn0.l98ExCgb3hw7Yt270P3N4_Qt4X2wz4Sg7sUwS29rZXM";
+  console.log("token");
+  console.log(token);
   if (token) {
+    alert("z");
     return `Bearer ${token}`;
   } else {
     return null;
   }
 };
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
   config.headers["Content-Type"] = "application/json; charset=utf-8";
   config.headers["X-Requested-With"] = "XMLHttpRequest";
   config.headers["Accept"] = "*/*";
-  config.headers["authorization"] = getToken();
+  config.headers["authorization"] = await getToken();
   return config;
 });
